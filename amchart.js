@@ -76,7 +76,8 @@
         }
 
         loadAmchartLibraires(){
-        	// script1.addEventListener("load", event=>{
+		this._shadowRoot.appendChild(script1);
+		// script1.addEventListener("load", event=>{
             // 	console.log(event);
             // 	this.amchartsLoaded = true;	
             	this._shadowRoot.appendChild(script2);
@@ -92,7 +93,7 @@
             // 	// this.loadAmchart();
             // });
 
-			this._shadowRoot.appendChild(script1);
+
 			// if(this.amchartsLoaded){
 				// this.loadAmchart();
 			// }

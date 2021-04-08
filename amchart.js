@@ -66,7 +66,6 @@
 
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
         onCustomWidgetAfterUpdate(changedProperties) {
-            debugger;
 			console.log("onCustomWidgetAfterUpdate")
 			console.log("this._props prop = ", this._props);
 			this._props = { ...this._props, ...changedProperties };
@@ -77,26 +76,26 @@
         }
 
         loadAmchartLibraires(){
-        	script1.addEventListener("load", event=>{
-            	console.log(event);
-            	this.amchartsLoaded = true;	
+        	// script1.addEventListener("load", event=>{
+            // 	console.log(event);
+            // 	this.amchartsLoaded = true;	
             	this._shadowRoot.appendChild(script2);
-            });
+            // });
 
-            script2.addEventListener("load", event=>{
-            	console.log(event);
+            // script2.addEventListener("load", event=>{
+            // 	console.log(event);
             	this._shadowRoot.appendChild(script3);
-            });
+            // });
 
-            script3.addEventListener("load", event=>{
-            	console.log(event);
-            	// this.loadAmchart();
-            });
+            // script3.addEventListener("load", event=>{
+            // 	console.log(event);
+            // 	// this.loadAmchart();
+            // });
 
 			this._shadowRoot.appendChild(script1);
-			if(this.amchartsLoaded){
+			// if(this.amchartsLoaded){
 				// this.loadAmchart();
-			}
+			// }
         }
 
         loadAmchart(){

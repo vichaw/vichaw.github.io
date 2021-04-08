@@ -1,6 +1,6 @@
 (function() {
 
-	let src1="https://www.amcharts.com/lib/3/amcharts.js"
+	let src2="https://www.amcharts.com/lib/3/amcharts.js"
 	let src2="https://www.amcharts.com/lib/3/gauge.js"
 	let src3="https://www.amcharts.com/lib/3/themes/dark.js"
 
@@ -76,23 +76,23 @@
         }
 
         loadAmchartLibraires(){
-		this._shadowRoot.appendChild(script1);
-		// script1.addEventListener("load", event=>{
-            // 	console.log(event);
-            // 	this.amchartsLoaded = true;	
+        	script1.addEventListener("load", event=>{
+            	console.log(event);
+            	// this.amchartsLoaded = true;	
             	this._shadowRoot.appendChild(script2);
-            // });
+            });
 
-            // script2.addEventListener("load", event=>{
-            // 	console.log(event);
-            // });
+            script2.addEventListener("load", event=>{
+            	console.log(event);
+            	this._shadowRoot.appendChild(script3);
+            });
 
-            // script3.addEventListener("load", event=>{
-            // 	console.log(event);
-            // 	// this.loadAmchart();
-            // });
+            script3.addEventListener("load", event=>{
+            	console.log(event);
+            	// this.loadAmchart();
+            });
 
-
+			this._shadowRoot.appendChild(script1);
 			// if(this.amchartsLoaded){
 				// this.loadAmchart();
 			// }
@@ -106,6 +106,7 @@
 					"minRadius": 34,
 					"fontFamily": "Calibri",
 					"hideBalloonTime": 0,
+					"theme": "dark",
 					"arrows": [
 						{
 							"id": "Actual",

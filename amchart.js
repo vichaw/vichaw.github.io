@@ -19,12 +19,6 @@
     let template = document.createElement("template");
     template.innerHTML = `
 		<style>
-			.amcharts-chart-div>a{
-				visibility: hidden;
-			}
-			h1.hidden {
-				visibility: hidden;
-			}
 		</style>
 		<div id="chartdiv" style="width: 100% !important; height: 400px !important; background-color: #282828 !important;" ></div>
 		`;
@@ -44,13 +38,13 @@
             this.loadAmchartLibraires();           
             
             this._props = {};
-            this._firstConnection = false;
+            // this._firstConnection = false;
         }
        
          //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
-            this._firstConnection = true;
-            this.loadAmchartLibraires();           
+            // this._firstConnection = true;
+            // this.loadAmchartLibraires();           
         }
 
         //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
@@ -73,9 +67,13 @@
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
         onCustomWidgetAfterUpdate(changedProperties) {
             debugger;
-             if(this._firstConnection){
-             	//this.loadAmchart();  
-             }
+			console.log("onCustomWidgetAfterUpdate")
+			console.log("this._props prop = ", this._props);
+			this._props = { ...this._props, ...changedProperties };
+			console.log("changedProperties = ", changedProperties);
+            //  if(this._firstConnection){
+             	this.loadAmchart();  
+            //  }
         }
 
         loadAmchartLibraires(){
@@ -92,12 +90,12 @@
 
             script3.addEventListener("load", event=>{
             	console.log(event);
-            	this.loadAmchart();
+            	// this.loadAmchart();
             });
 
 			this._shadowRoot.appendChild(script1);
 			if(this.amchartsLoaded){
-				this.loadAmchart();
+				// this.loadAmchart();
 			}
         }
 

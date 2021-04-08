@@ -85,7 +85,6 @@
 
             // script2.addEventListener("load", event=>{
             // 	console.log(event);
-            	this._shadowRoot.appendChild(script3);
             // });
 
             // script3.addEventListener("load", event=>{
@@ -107,7 +106,6 @@
 					"minRadius": 34,
 					"fontFamily": "Calibri",
 					"hideBalloonTime": 0,
-					"theme": "dark",
 					"arrows": [
 						{
 							"id": "Actual",

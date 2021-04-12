@@ -29,10 +29,9 @@
             let shadowRoot = this.attachShadow({
                 mode: "open"
             });
-            this._shadowRoot = shadowRoot;
-			shadowRoot.appendChild(script1);
-			shadowRoot.appendChild(script2);
-			shadowRoot.appendChild(script3);
+		shadowRoot.appendChild(script1);
+		shadowRoot.appendChild(script2);
+		shadowRoot.appendChild(script3);
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {
                 var event = new Event("onClick");

@@ -1,6 +1,6 @@
 (function() {
 
-	let src2="https://www.amcharts.com/lib/3/amcharts.js"
+	let src1="https://www.amcharts.com/lib/3/amcharts.js"
 	let src2="https://www.amcharts.com/lib/3/gauge.js"
 	let src3="https://www.amcharts.com/lib/3/themes/dark.js"
 

@@ -30,12 +30,14 @@
                 mode: "open"
             });
             this._shadowRoot = shadowRoot;
+			shadowRoot.appendChild(script1);
+			shadowRoot.appendChild(script2);
+			shadowRoot.appendChild(script3);
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
-            });
-            this.loadAmchartLibraires();           
+            });    
             
             this._props = {};
             // this._firstConnection = false;
@@ -44,7 +46,7 @@
          //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
             // this._firstConnection = true;
-            this.loadAmchartLibraires();           
+            // this.loadAmchartLibraires();           
         }
 
         //Fired when the widget is removed from the html DOM of the page (e.g. by hide)
@@ -75,31 +77,7 @@
             //  }
         }
 
-        loadAmchartLibraires(){
-        	script1.addEventListener("load", event=>{
-            	console.log(event);
-            	// this.amchartsLoaded = true;	
-            	this._shadowRoot.appendChild(script2);
-            });
-
-            script2.addEventListener("load", event=>{
-            	console.log(event);
-            	this._shadowRoot.appendChild(script3);
-            });
-
-            script3.addEventListener("load", event=>{
-            	console.log(event);
-            	// this.loadAmchart();
-            });
-
-			this._shadowRoot.appendChild(script1);
-			// if(this.amchartsLoaded){
-				// this.loadAmchart();
-			// }
-        }
-
         loadAmchart(){
-        	debugger;
         	this.guage2 = AmCharts.makeChart("chartdiv",
 				{
 					"type": "gauge",

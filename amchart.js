@@ -29,15 +29,16 @@
             let shadowRoot = this.attachShadow({
                 mode: "open"
             });
-		debugger;
-		shadowRoot.appendChild(script1);
-		shadowRoot.appendChild(script2);
-		shadowRoot.appendChild(script3);
+		
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
+		shadowRoot.appendChild(script1);
+		shadowRoot.appendChild(script2);
+		shadowRoot.appendChild(script3);
+		script3.addEventListener("load", loadAmchart); 
             
             this._props = {};
             // this._firstConnection = false;
@@ -77,7 +78,7 @@
             //  }
         }
 
-        loadAmchart(){
+        function loadAmchart(){
         	this.guage2 = AmCharts.makeChart("chartdiv",
 				{
 					"type": "gauge",

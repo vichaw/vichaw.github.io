@@ -79,7 +79,7 @@
         }
 
         function loadAmchart(){
-        	this.guage2 = AmCharts.makeChart("chartdiv",
+        	var gauge = AmCharts.makeChart("chartdiv",
 				{
 					"type": "gauge",
 					"minRadius": 34,

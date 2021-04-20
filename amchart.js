@@ -40,7 +40,7 @@
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
-            script3.addEventListener("load", loadAmchart);
+            // script3.addEventListener("load", loadAmchart);
             this._props = {};
             // this._firstConnection = false;
         }

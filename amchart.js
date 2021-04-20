@@ -29,10 +29,12 @@
 				script1.src = src1;
 				script2.src = src2;
 				script3.src = src3;
+		
+		debugger;
 			
-			shadowRoot.appendChild(script1);
-			shadowRoot.appendChild(script2);
-			shadowRoot.appendChild(script3);
+		shadowRoot.appendChild(script1);
+		shadowRoot.appendChild(script2);
+		shadowRoot.appendChild(script3);
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {
                 var event = new Event("onClick");

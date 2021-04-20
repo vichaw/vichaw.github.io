@@ -91,7 +91,8 @@
         }
 
         loadAmchart(){
-        	var chart = new AmCharts.makeChart("chartdiv",
+		var cdiv = this.shadowRoot.getElementById('chartdiv');
+        	var chart = new AmCharts.makeChart(cdiv,
 				{
 					"type": "gauge",
 					"minRadius": 34,

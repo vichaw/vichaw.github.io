@@ -4,18 +4,6 @@
 	let src2="https://www.amcharts.com/lib/3/gauge.js"
 	let src3="https://www.amcharts.com/lib/3/themes/dark.js"
 
-	let script1 = document.createElement('script');
-	let script2 = document.createElement('script');
-	let script3 = document.createElement('script');
-
-	script1.type = 'text/javascript';
-	script2.type = 'text/javascript';
-	script3.type = 'text/javascript';
-
-	script1.src = src1;
-	script2.src = src2;
-	script3.src = src3;
-
     let template = document.createElement("template");
     template.innerHTML = `
 		<style>
@@ -29,6 +17,19 @@
             let shadowRoot = this.attachShadow({
                 mode: "open"
             });
+			
+				let script1 = document.createElement('script');
+				let script2 = document.createElement('script');
+				let script3 = document.createElement('script');
+
+				script1.type = 'text/javascript';
+				script2.type = 'text/javascript';
+				script3.type = 'text/javascript';
+
+				script1.src = src1;
+				script2.src = src2;
+				script3.src = src3;
+			
 			shadowRoot.appendChild(script1);
 			shadowRoot.appendChild(script2);
 			shadowRoot.appendChild(script3);
@@ -37,7 +38,7 @@
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
-            
+            script3.addEventListener("load", loadAmchart);
             this._props = {};
             // this._firstConnection = false;
         }
@@ -72,7 +73,7 @@
 			this._props = { ...this._props, ...changedProperties };
 			console.log("changedProperties = ", changedProperties);
             //  if(this._firstConnection){
-             	this.loadAmchart();  
+            // 	this.loadAmchart();  
             //  }
         }
 

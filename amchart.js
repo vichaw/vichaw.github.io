@@ -30,7 +30,6 @@
 				script2.src = src2;
 				script3.src = src3;
 		
-		debugger;
 			
 		shadowRoot.appendChild(script1);
 		shadowRoot.appendChild(script2);

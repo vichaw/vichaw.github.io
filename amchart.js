@@ -74,7 +74,7 @@
 			this._props = { ...this._props, ...changedProperties };
 			console.log("changedProperties = ", changedProperties);
             //  if(this._firstConnection){
-            // 	this.loadAmchart();  
+            this.loadAmchart();  
             //  }
         }
 

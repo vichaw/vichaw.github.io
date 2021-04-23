@@ -54,7 +54,6 @@
             
             this._props = {};
             // this._firstConnection = false;
-		this.loadAmchart();  
         }
        
          //Fired when the widget is added to the html DOM of the page
@@ -87,11 +86,59 @@
 			this._props = { ...this._props, ...changedProperties };
 			console.log("changedProperties = ", changedProperties);
             //  if(this._firstConnection){
-             	
-            //  }
+			
+			if ("Title" in changedProperties) {
+				this.$Title = changedProperties["Title"];
+			}
+			if ("Primvalue" in changedProperties) {
+				this.$Primvalue = changedProperties["Primvalue"];
+			}
+			
+			if ("Secvalue" in changedProperties) {
+				this.$Secvalue = changedProperties["Secvalue"];
+			}
+			
+			if ("BottomText" in changedProperties) {
+				this.$BottomText = changedProperties["BottomText"];
+			}
+			if ("Rng1Start" in changedProperties) {
+				this.$Rng1Start = changedProperties["Rng1Start"];
+			}
+			
+			if ("Rng1End" in changedProperties) {
+				this.$Rng1End = changedProperties["Rng1End"];
+			}
+			
+			if ("Rng1Hover" in changedProperties) {
+				this.$Rng1Hover = changedProperties["Rng1Hover"];
+			}
+			if ("Rng2Start" in changedProperties) {
+				this.$Rng2Start = changedProperties["Rng2Start"];
+			}
+			
+			if ("Rng2End" in changedProperties) {
+				this.$Rng2End = changedProperties["Rng2End"];
+			}
+			
+			if ("Rng2Hover" in changedProperties) {
+				this.$Rng2Hover = changedProperties["Rng2Hover"];
+			}
+			if ("Rng3Start" in changedProperties) {
+				this.$Rng3Start = changedProperties["Rng3Start"];
+			}
+			
+			if ("Rng3End" in changedProperties) {
+				this.$Rng3End = changedProperties["Rng3End"];
+			}
+			
+			if ("Rng3Hover" in changedProperties) {
+				this.$Rng3Hover = changedProperties["Rng3Hover"];
+			}
+			
+			this.renderAmchart(this.$Title, this.$Primvalue, this.$Secvalue, this.$BottomText, this.$Rng1Start, this.$Rng1End, this.$Rng1Hover, this.$Rng2Start, this.$Rng2End, this.$Rng2Hover, this.$Rng3Start, this.$Rng3End, this.$Rng3Hover,);  
         }
 
-        loadAmchart(){
+        renderAmchart(tiTl, primVal, secVal, bTxt, rng1St, rng1Ed, rng1Hv, rng2St, rng2Ed, rng2Hv, rng3St, rng3Ed, rng3Hv){
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
         	var chart = new AmCharts.makeChart(cdiv,
 				{
@@ -108,7 +155,7 @@
 							"radius": "93%",
 							"startWidth": 8,
 							"color": "#FFFFFF",
-							"value": 60
+							"value": primVal
 						},
 						{
 							"color": "#FFFF00",
@@ -116,13 +163,13 @@
 							"innerRadius": "62%",
 							"radius": "105%",
 							"startWidth": 2,
-							"value": 50
+							"value": secVal
 						}
 					],
 					"axes": [
 						{
 							"axisThickness": 1,
-							"bottomText": "50",
+							"bottomText": bTxt,
 							"bottomTextFontSize": 36,
 							"bottomTextYOffset": -125,
 							"endAngle": 90,
@@ -137,27 +184,27 @@
 							"bands": [
 								{
 									"color": "#008000",
-									"endValue": 40,
+									"endValue": rng1Ed,
 									"id": "GaugeBand-1",
 									"innerRadius": "65%",
-									"startValue": 0,
-									"balloonText": "Plan:50"
+									"startValue": rng1St,
+									"balloonText": rng1Hv
 								},
 								{
 									"color": "#00CC00",
-									"endValue": 75,
+									"endValue": rng2Ed,
 									"id": "GaugeBand-2",
 									"innerRadius": "65%",
-									"startValue": 40,
-									"balloonText": "Plan:50"
+									"startValue": rng2St,
+									"balloonText": rng2Hv
 								},
 								{
 									"color": "#00EE00",
-									"endValue": 100,
+									"endValue": rng3Ed,
 									"id": "GaugeBand-3",
 									"innerRadius": "65%",
-									"startValue": 75,
-									"balloonText": "Plan:50"
+									"startValue": rng3St,
+									"balloonText": rng3Hv
 								}
 							]
 						}
@@ -168,11 +215,12 @@
 						{
 							"id": "Title-1",
 							"size": 15,
-							"text": "Speedometer"
+							"text": tiTl
 						}
 					]
 				}
 			);
+
         }
     }
     customElements.define("com-dtt-amchart", Amchart);

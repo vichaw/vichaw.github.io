@@ -278,5 +278,5 @@
 			});
         }
     }
-    customElements.define("com.dtt.ambullet", Amchart);
+    customElements.define("com-dtt-ambullet", Amchart);
 })();

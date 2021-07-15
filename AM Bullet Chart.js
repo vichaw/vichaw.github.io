@@ -1,5 +1,5 @@
 (function() {
-	
+	/*
 	let src1="https://cdn.amcharts.com/lib/4/core.js";
 	let src2="https://cdn.amcharts.com/lib/4/charts.js";
 	let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
@@ -19,7 +19,7 @@
 	document.getElementsByTagName('head')[0].appendChild(script1);
 	document.getElementsByTagName('head')[0].appendChild(script2);
 	document.getElementsByTagName('head')[0].appendChild(script3);
-	
+	*/
 	let template = document.createElement("template");
     template.innerHTML = `
 		<div id="chartdiv" style="width: 100% !important; height: inherit; " ></div>

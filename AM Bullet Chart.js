@@ -1,30 +1,9 @@
 (function() {
 	
-	
-	let src1="https://cdn.amcharts.com/lib/4/core.js";
-	let src2="https://cdn.amcharts.com/lib/4/charts.js";
-	let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
-
-	let script1 = document.createElement('script');
-	let script2 = document.createElement('script');
-	let script3 = document.createElement('script');
-
-	script1.type = 'text/javascript';
-	script2.type = 'text/javascript';
-	script3.type = 'text/javascript';
-
-	script1.src = src1;
-	script2.src = src2;
-	script3.src = src3; 
-	
-
-    let template = document.createElement("template");
+	let template = document.createElement("template");
     template.innerHTML = `
 		<div id="chartdiv" style="width: 100% !important; height: inherit; " ></div>
 		`;
-	template.appendChild(script1);
-	template.appendChild(script2);
-	template.appendChild(script3);
 	
     class Amchart extends HTMLElement {
         constructor() {
@@ -33,9 +12,27 @@
             let shadowRoot = this.attachShadow({
                 mode: "open"
             });
-			/* shadowRoot.appendChild(script1);
+			
+			let src1="https://cdn.amcharts.com/lib/4/core.js";
+			let src2="https://cdn.amcharts.com/lib/4/charts.js";
+			let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
+
+			let script1 = document.createElement('script');
+			let script2 = document.createElement('script');
+			let script3 = document.createElement('script');
+
+			script1.type = 'text/javascript';
+			script2.type = 'text/javascript';
+			script3.type = 'text/javascript';
+
+			script1.src = src1;
+			script2.src = src2;
+			script3.src = src3; 
+			
+			shadowRoot.appendChild(script1);
 			shadowRoot.appendChild(script2);
-			shadowRoot.appendChild(script3); */
+			shadowRoot.appendChild(script3); 
+			
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {
                 var event = new Event("onClick");

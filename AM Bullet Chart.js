@@ -1,5 +1,5 @@
 (function() {
-	/*
+	
 	let src1="https://cdn.amcharts.com/lib/4/core.js";
 	let src2="https://cdn.amcharts.com/lib/4/charts.js";
 	let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
@@ -15,11 +15,15 @@
 	script1.src = src1;
 	script2.src = src2;
 	script3.src = src3; 
-	
+	/*
 	document.getElementsByTagName('head')[0].appendChild(script1);
 	document.getElementsByTagName('head')[0].appendChild(script2);
-	document.getElementsByTagName('head')[0].appendChild(script3);
-	*/
+	document.getElementsByTagName('head')[0].appendChild(script3); */
+	
+	this.appendChild(script1);
+	this.appendChild(script2);
+	this.appendChild(script3); 
+	
 	
 	let template = document.createElement("template");
     template.innerHTML = `
@@ -34,7 +38,7 @@
                 mode: "open"
             });
 			
-			
+			/*
 			let src1="https://cdn.amcharts.com/lib/4/core.js";
 			let src2="https://cdn.amcharts.com/lib/4/charts.js";
 			let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
@@ -54,6 +58,7 @@
 			shadowRoot.appendChild(script1);
 			shadowRoot.appendChild(script2);
 			shadowRoot.appendChild(script3); 
+			*/
 			
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {

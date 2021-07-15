@@ -1,6 +1,6 @@
 (function() {
 	
-	/*
+	
 	let src1="https://cdn.amcharts.com/lib/4/core.js";
 	let src2="https://cdn.amcharts.com/lib/4/charts.js";
 	let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
@@ -15,16 +15,17 @@
 
 	script1.src = src1;
 	script2.src = src2;
-	script3.src = src3; */
+	script3.src = src3; 
 	
 
     let template = document.createElement("template");
     template.innerHTML = `
-		<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-		<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-		<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 		<div id="chartdiv" style="width: 100% !important; height: inherit; " ></div>
 		`;
+	template.appendChild(script1);
+	template.appendChild(script2);
+	template.appendChild(script3);
+	
     class Amchart extends HTMLElement {
         constructor() {
             super();

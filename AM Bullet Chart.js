@@ -33,7 +33,7 @@
                 mode: "open"
             });
 			
-			/*
+			
 			let src1="https://cdn.amcharts.com/lib/4/core.js";
 			let src2="https://cdn.amcharts.com/lib/4/charts.js";
 			let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
@@ -52,7 +52,7 @@
 			
 			shadowRoot.appendChild(script1);
 			shadowRoot.appendChild(script2);
-			shadowRoot.appendChild(script3); */
+			shadowRoot.appendChild(script3); 
 			
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {

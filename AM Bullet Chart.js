@@ -20,6 +20,7 @@
 	document.getElementsByTagName('head')[0].appendChild(script2);
 	document.getElementsByTagName('head')[0].appendChild(script3);
 	*/
+	
 	let template = document.createElement("template");
     template.innerHTML = `
 		<div id="chartdiv" style="width: 100% !important; height: inherit; " ></div>

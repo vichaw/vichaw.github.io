@@ -1,5 +1,25 @@
 (function() {
 	
+	let src1="https://cdn.amcharts.com/lib/4/core.js";
+	let src2="https://cdn.amcharts.com/lib/4/charts.js";
+	let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
+
+	let script1 = document.createElement('script');
+	let script2 = document.createElement('script');
+	let script3 = document.createElement('script');
+
+	script1.type = 'text/javascript';
+	script2.type = 'text/javascript';
+	script3.type = 'text/javascript';
+
+	script1.src = src1;
+	script2.src = src2;
+	script3.src = src3; 
+	
+	document.getElementsByTagName('head')[0].appendChild(script1);
+	document.getElementsByTagName('head')[0].appendChild(script2);
+	document.getElementsByTagName('head')[0].appendChild(script3);
+	
 	let template = document.createElement("template");
     template.innerHTML = `
 		<div id="chartdiv" style="width: 100% !important; height: inherit; " ></div>
@@ -13,6 +33,7 @@
                 mode: "open"
             });
 			
+			/*
 			let src1="https://cdn.amcharts.com/lib/4/core.js";
 			let src2="https://cdn.amcharts.com/lib/4/charts.js";
 			let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
@@ -31,7 +52,7 @@
 			
 			shadowRoot.appendChild(script1);
 			shadowRoot.appendChild(script2);
-			shadowRoot.appendChild(script3); 
+			shadowRoot.appendChild(script3); */
 			
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {

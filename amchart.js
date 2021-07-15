@@ -71,14 +71,35 @@
 			// console.log("changedProperties = ", changedProperties);
             //  if(this._firstConnection){
 			
-			if ("ChartData" in changedProperties) {
-				this.$ChartData = changedProperties["ChartData"];
+			if ("KPIs" in changedProperties) {
+				this.$KPIs = changedProperties["KPIs"];
+			}
+			if ("BaseData" in changedProperties) {
+				this.$BaseData = changedProperties["BaseData"];
+			}
+			if ("MedianData" in changedProperties) {
+				this.$MedianData = changedProperties["MedianData"];
+			}
+			if ("PriorData" in changedProperties) {
+				this.$PriorData = changedProperties["PriorData"];
+			}
+			if ("Prior2Data" in changedProperties) {
+				this.$Prior2Data = changedProperties["Prior2Data"];
+			}
+			if ("MinData" in changedProperties) {
+				this.$MinData = changedProperties["MinData"];
+			}
+			if ("MaxData" in changedProperties) {
+				this.$MaxData = changedProperties["MaxData"];
+			}
+			if ("NumFormat" in changedProperties) {
+				this.$NumFormat = changedProperties["NumFormat"];
 			}
 						
-			this.renderAmchart(this.$ChartData);  
+			this.renderAmchart(this.$KPIs, this.$BaseData, this.$MedianData, this.$PriorData, this.$Prior2Data, this.$MinData, this.$MaxData, this.$NumFormat);  
         }
 
-        renderAmchart(chinfo){
+        renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
 			var bullet = new am4core.ready(function() {
 				
@@ -86,16 +107,30 @@
 				am4core.useTheme(am4themes_animated);
 				// Themes end
 				
-				var data = chinfo;
+				var kpi = kpis;
+				var base = baseVal;
+				var median = medVal;
+				var prior = prVal;
+				var prior2y = pr2Val; 
+				var min = minVal;
+				var max = maxVal;
+				var format = formVal;
 				
 				var container = am4core.create(cdiv, am4core.Container);
 				container.width = am4core.percent(100);
-				container.height = data.length*80;
+				container.height = kpi.length*80;
 				container.layout = "vertical";
 				
 				for (var i=0; i<data.length; i++){
 				
-					createBulletChart(container, "solid", data[i].min, data[i].max, data[i].format, data[i].chdata);
+					var data = 	{
+							"category":kpi[i],
+							"value":base[i],
+							"median":median[i],
+							"prior":prior[i],
+							"2yprior":prior2y[i]
+						};
+					createBulletChart(container, "solid", min[i], max[i], format[i], data);
 				}
 
 				/* Create ranges 

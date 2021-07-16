@@ -107,7 +107,7 @@ var getScriptPromisify = (src) => {
 						
 			this.renderAmchart(this.$KPIs, this.$BaseData, this.$MedianData, this.$PriorData, this.$Prior2Data, this.$MinData, this.$MaxData, this.$NumFormat);  
         }
-	console.log(resultSet);
+	
         async renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
 			
 			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");

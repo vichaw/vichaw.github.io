@@ -135,7 +135,7 @@ var getScriptPromisify = (src) => {
 				container.height = kpi.length*80;
 				container.layout = "vertical";
 				
-				for (var i=0; i<data.length; i++){
+				for (var i=0; i<kpi.length; i++){
 				
 					var data = 	{
 							"category":kpi[i],

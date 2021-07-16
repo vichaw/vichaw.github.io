@@ -109,7 +109,7 @@ var getScriptPromisify = (src) => {
         }
 	
 	async render(resultSet){   
-		console.log("It works");
+		console.log(resultSet);
 	
 	}
 	    

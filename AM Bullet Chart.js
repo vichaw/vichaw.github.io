@@ -107,13 +107,9 @@ var getScriptPromisify = (src) => {
 						
 			this.renderAmchart(this.$KPIs, this.$BaseData, this.$MedianData, this.$PriorData, this.$Prior2Data, this.$MinData, this.$MaxData, this.$NumFormat);  
         }
-	
-	async render(resultSet){   
-		console.log(resultSet);
-	
-	}
-	    
-        async renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
+		
+        // async renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
+		async renderAmchart(chartData){
 			
 			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
 			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
@@ -126,6 +122,8 @@ var getScriptPromisify = (src) => {
 				am4core.useTheme(am4themes_animated);
 				// Themes end
 				
+				var data = chartData;
+				/*
 				var kpi = kpis;
 				var base = baseVal;
 				var median = medVal;
@@ -134,14 +132,16 @@ var getScriptPromisify = (src) => {
 				var min = minVal;
 				var max = maxVal;
 				var format = formVal;
+				*/
 				
 				var container = am4core.create(cdiv, am4core.Container);
 				container.width = am4core.percent(100);
-				container.height = kpi.length*80;
+				container.height = data.length*80;
 				container.layout = "vertical";
 				
-				for (var i=0; i<kpi.length; i++){
-				
+				for (var i=0; i<data.length; i++){
+					
+					/*
 					var data = 	{
 							"category":kpi[i],
 							"value":base[i],
@@ -149,7 +149,8 @@ var getScriptPromisify = (src) => {
 							"prior":prior[i],
 							"2yprior":prior2y[i]
 						};
-					createBulletChart(container, "solid", min[i], max[i], format[i], data);
+					createBulletChart(container, "solid", min[i], max[i], format[i], data); */
+					createBulletChart(container, "solid", data[i].min, data[i].max, data[i].format, data[i].chdata);
 				}
 
 				/* Create ranges 

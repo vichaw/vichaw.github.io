@@ -46,17 +46,8 @@ var getScriptPromisify = (src) => {
             });    
             
             this._props = {};
-			
-			this.loadLibrary();
             // this._firstConnection = false;
         }
-		
-		async loadLibrary(){
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
-		
-		}
        
          //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
@@ -117,7 +108,11 @@ var getScriptPromisify = (src) => {
 			this.renderAmchart(this.$KPIs, this.$BaseData, this.$MedianData, this.$PriorData, this.$Prior2Data, this.$MinData, this.$MaxData, this.$NumFormat);  
         }
 		
-        renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
+        async renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
+			
+			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
+			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
+			await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
 			
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
 			var bullet = new am4core.ready(function() {
@@ -292,7 +287,7 @@ var getScriptPromisify = (src) => {
 				  chart.cursor.lineY.disabled = true;
 
 				  valueAxis.cursorTooltipEnabled = true;
-				  categoryAxis.cursorTooltipEnabled = true;
+				  categoryAxis.cursorTooltipEnabled = false;
 				  chart.arrangeTooltips = false;
 				}				
 			});

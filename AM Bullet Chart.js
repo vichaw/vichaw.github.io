@@ -46,8 +46,17 @@ var getScriptPromisify = (src) => {
             });    
             
             this._props = {};
+			
+			this.loadLibrary();
             // this._firstConnection = false;
         }
+		
+		async loadLibrary(){
+			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
+			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
+			await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+		
+		}
        
          //Fired when the widget is added to the html DOM of the page
         connectedCallback(){
@@ -108,12 +117,7 @@ var getScriptPromisify = (src) => {
 			this.renderAmchart(this.$KPIs, this.$BaseData, this.$MedianData, this.$PriorData, this.$Prior2Data, this.$MinData, this.$MaxData, this.$NumFormat);  
         }
 		
-        // async renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
-		async renderAmchart(chartData){
-			
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+        renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
 			
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
 			var bullet = new am4core.ready(function() {
@@ -121,9 +125,7 @@ var getScriptPromisify = (src) => {
 				// Themes begin
 				am4core.useTheme(am4themes_animated);
 				// Themes end
-				
-				var data = chartData;
-				/*
+
 				var kpi = kpis;
 				var base = baseVal;
 				var median = medVal;
@@ -132,16 +134,14 @@ var getScriptPromisify = (src) => {
 				var min = minVal;
 				var max = maxVal;
 				var format = formVal;
-				*/
 				
 				var container = am4core.create(cdiv, am4core.Container);
 				container.width = am4core.percent(100);
-				container.height = data.length*80;
+				container.height = kpi.length*90;
 				container.layout = "vertical";
 				
-				for (var i=0; i<data.length; i++){
+				for (var i=0; i<kpi.length; i++){
 					
-					/*
 					var data = 	{
 							"category":kpi[i],
 							"value":base[i],
@@ -149,8 +149,7 @@ var getScriptPromisify = (src) => {
 							"prior":prior[i],
 							"2yprior":prior2y[i]
 						};
-					createBulletChart(container, "solid", min[i], max[i], format[i], data); */
-					createBulletChart(container, "solid", data[i].min, data[i].max, data[i].format, data[i].chdata);
+					createBulletChart(container, "solid", min[i], max[i], format[i], data); 
 				}
 
 				/* Create ranges 
@@ -292,7 +291,8 @@ var getScriptPromisify = (src) => {
 				  chart.cursor.lineX.disabled = true;
 				  chart.cursor.lineY.disabled = true;
 
-				  valueAxis.cursorTooltipEnabled = false;
+				  valueAxis.cursorTooltipEnabled = true;
+				  categoryAxis.cursorTooltipEnabled = true;
 				  chart.arrangeTooltips = false;
 				}				
 			});

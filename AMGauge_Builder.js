@@ -262,5 +262,5 @@
 		}
 
 	}
-	customElements.define("com-dtt-amgauge-bps", Amgauge_Bps);
+	customElements.define("com-dtt-amgauge-bps", AMGauge_Bps);
 })();

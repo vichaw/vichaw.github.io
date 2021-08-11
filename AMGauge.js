@@ -150,8 +150,8 @@ var getScriptPromisify = (src) => {
 						// chart.radius = am4core.percent(75);
 						chart.startAngle = sAngle;
 						chart.endAngle = eAngle;
-						chart.showTooltipOn = "always";
-						chart.tooltipText = "text";
+						chart.showTooltipOn = "hover";
+						chart.tooltipText = r2Lbl;
 						
 						var axis = chart.xAxes.push(new am4charts.ValueAxis());
 						axis.min = scStart;

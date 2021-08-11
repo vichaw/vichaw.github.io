@@ -186,13 +186,13 @@
 			this._shadowRoot.getElementById("builder_minval").value = newVal;
 		}
 		get GaugeScaleStart() {
-			return this._shadowRoot.getElementById("builder_maxval").value;
+			return this._shadowRoot.getElementById("builder_minval").value;
 		}
 		set GaugeScaleEnd(newVal) {
 			this._shadowRoot.getElementById("builder_maxval").value = newVal;
 		}
 		get GaugeScaleEnd() {
-			return this._shadowRoot.getElementById("builder_prval").value;
+			return this._shadowRoot.getElementById("builder_maxval").value;
 		}
 		set Rng1Start(newVal) {
 			this._shadowRoot.getElementById("builder_r1stval").value = newVal;
@@ -213,10 +213,10 @@
 			return this._shadowRoot.getElementById("builder_r2stval").value;
 		}
 		set Rng2End(newVal) {
-			this._shadowRoot.getElementById("builder_r1edval").value = newVal;
+			this._shadowRoot.getElementById("builder_r2edval").value = newVal;
 		}
 		get Rng2End() {
-			return this._shadowRoot.getElementById("builder_r1edval").value;
+			return this._shadowRoot.getElementById("builder_r2edval").value;
 		}
 		set Rng3Start(newVal) {
 			this._shadowRoot.getElementById("builder_r3stval").value = newVal;

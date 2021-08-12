@@ -11,9 +11,21 @@
 									</td>
 								</tr>
 								<tr>
+									<td>Show Primary</td>
+									<td>
+										<input id="builder_prshow" type="checkbox" checked>
+									</td>
+								</tr>
+								<tr>
 									<td>Secondary Value</td>
 									<td>
 										<input id="builder_scval" type="number" size="5" maxlength="5" value="45">
+									</td>
+								</tr>
+								<tr>
+									<td>Show Secondary</td>
+									<td>
+										<input id="builder_scshow" type="checkbox" checked>
 									</td>
 								</tr>
 								<tr>
@@ -115,7 +127,10 @@
 							padding: 1em 1em 1em 1em;
 							}
 							td{
-								padding: 5px;
+								padding: 4px;
+							}
+							input{
+								width: 100px;
 							}
 						</style>`;
 	class AMGauge_Bps extends HTMLElement {
@@ -127,7 +142,9 @@
 			this._shadowRoot.appendChild(template.content.cloneNode(true));
 			this._shadowRoot.getElementById("form").addEventListener("submit", this._submit.bind(this));
 			this._shadowRoot.getElementById("builder_prval").addEventListener("input", this._formSubmit.bind(this));
+			this._shadowRoot.getElementById("builder_prshow").addEventListener("change", this._formSubmit.bind(this));
 			this._shadowRoot.getElementById("builder_scval").addEventListener("input", this._formSubmit.bind(this));
+			this._shadowRoot.getElementById("builder_scshow").addEventListener("change", this._formSubmit.bind(this));
 			this._shadowRoot.getElementById("builder_minval").addEventListener("input", this._formSubmit.bind(this));
 			this._shadowRoot.getElementById("builder_maxval").addEventListener("input", this._formSubmit.bind(this));
 			this._shadowRoot.getElementById("builder_r1stval").addEventListener("input", this._formSubmit.bind(this));
@@ -152,7 +169,9 @@
 					detail: {
 						properties: {
 							PrimValue: this.PrimValue,
+							PrimShow: this.PrimShow,
 							SecValue: this.SecValue,
+							SecShow: this.SecShow,
 							GaugeScaleStart: this.GaugeScaleStart,
 							GaugeScaleEnd: this.GaugeScaleEnd,
 							Rng1Start: this.Rng1Start,
@@ -176,11 +195,23 @@
 		get PrimValue() {
 			return this._shadowRoot.getElementById("builder_prval").valueAsNumber;
 		}
+		set PrimShow(flag) {
+			this._shadowRoot.getElementById("builder_prshow").checked = flag;
+		}
+		get PrimShow() {
+			return this._shadowRoot.getElementById("builder_prshow").checked;
+		}
 		set SecValue(newVal) {
 			this._shadowRoot.getElementById("builder_scval").value = newVal;
 		}
 		get SecValue() {
 			return this._shadowRoot.getElementById("builder_scval").valueAsNumber;
+		}
+		set SecShow(flag) {
+			this._shadowRoot.getElementById("builder_scshow").checked = flag;
+		}
+		get SecShow() {
+			return this._shadowRoot.getElementById("builder_scshow").checked;
 		}
 		set GaugeScaleStart(newVal) {
 			this._shadowRoot.getElementById("builder_minval").value = newVal;

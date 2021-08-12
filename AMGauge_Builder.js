@@ -41,33 +41,27 @@
 									</td>
 								</tr>
 								<tr>
-									<td>Set Range1 Start Value</td>
-									<td>
-										<input id="builder_r1stval" type="number" size="5" maxlength="5" value="0">
+									<td>Range1: Start Value
+									<br/>	<input id="builder_r1stval" type="number" size="5" maxlength="5" value="0">
 									</td>
-									<td>End Value</td>
-									<td>
-										<input id="builder_r1edval" type="number" size="5" maxlength="5" value="45">
+									<td>End Value
+									<br/>	<input id="builder_r1edval" type="number" size="5" maxlength="5" value="45">
 									</td>
 								</tr>
 								<tr>
-									<td>Set Range2 Start Value</td>
-									<td>
-										<input id="builder_r2stval" type="number" size="5" maxlength="5" value="45">
+									<td>Range2: Start Value
+									<br/>	<input id="builder_r2stval" type="number" size="5" maxlength="5" value="45">
 									</td>
-									<td>End Value</td>
-									<td>
-										<input id="builder_r2edval" type="number" size="5" maxlength="5" value="75">
+									<td>End Value
+									<br/>	<input id="builder_r2edval" type="number" size="5" maxlength="5" value="75">
 									</td>
 								</tr>
 								<tr>
-									<td>Set Range3 Start Value</td>
-									<td>
-										<input id="builder_r3stval" type="number" size="5" maxlength="5" value="75">
+									<td>Set Range3 Start Value
+									<br/>	<input id="builder_r3stval" type="number" size="5" maxlength="5" value="75">
 									</td>
-									<td>End Value</td>
-									<td>
-										<input id="builder_r3edval" type="number" size="5" maxlength="5" value="100">
+									<td>End Value
+									<br/>	<input id="builder_r3edval" type="number" size="5" maxlength="5" value="100">
 									</td>
 								</tr>
 								<tr>

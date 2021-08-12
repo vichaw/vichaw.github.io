@@ -174,61 +174,61 @@
 			this._shadowRoot.getElementById("builder_prval").value = newVal;
 		}
 		get PrimValue() {
-			return this._shadowRoot.getElementById("builder_prval").value;
+			return this._shadowRoot.getElementById("builder_prval").valueAsNumber;
 		}
 		set SecValue(newVal) {
 			this._shadowRoot.getElementById("builder_scval").value = newVal;
 		}
 		get SecValue() {
-			return this._shadowRoot.getElementById("builder_scval").value;
+			return this._shadowRoot.getElementById("builder_scval").valueAsNumber;
 		}
 		set GaugeScaleStart(newVal) {
 			this._shadowRoot.getElementById("builder_minval").value = newVal;
 		}
 		get GaugeScaleStart() {
-			return this._shadowRoot.getElementById("builder_minval").value;
+			return this._shadowRoot.getElementById("builder_minval").valueAsNumber;
 		}
 		set GaugeScaleEnd(newVal) {
 			this._shadowRoot.getElementById("builder_maxval").value = newVal;
 		}
 		get GaugeScaleEnd() {
-			return this._shadowRoot.getElementById("builder_maxval").value;
+			return this._shadowRoot.getElementById("builder_maxval").valueAsNumber;
 		}
 		set Rng1Start(newVal) {
 			this._shadowRoot.getElementById("builder_r1stval").value = newVal;
 		}
 		get Rng1Start() {
-			return this._shadowRoot.getElementById("builder_r1stval").value;
+			return this._shadowRoot.getElementById("builder_r1stval").valueAsNumber;
 		}
 		set Rng1End(newVal) {
 			this._shadowRoot.getElementById("builder_r1edval").value = newVal;
 		}
 		get Rng1End() {
-			return this._shadowRoot.getElementById("builder_r1edval").value;
+			return this._shadowRoot.getElementById("builder_r1edval").valueAsNumber;
 		}
 		set Rng2Start(newVal) {
 			this._shadowRoot.getElementById("builder_r2stval").value = newVal;
 		}
 		get Rng2Start() {
-			return this._shadowRoot.getElementById("builder_r2stval").value;
+			return this._shadowRoot.getElementById("builder_r2stval").valueAsNumber;
 		}
 		set Rng2End(newVal) {
 			this._shadowRoot.getElementById("builder_r2edval").value = newVal;
 		}
 		get Rng2End() {
-			return this._shadowRoot.getElementById("builder_r2edval").value;
+			return this._shadowRoot.getElementById("builder_r2edval").valueAsNumber;
 		}
 		set Rng3Start(newVal) {
 			this._shadowRoot.getElementById("builder_r3stval").value = newVal;
 		}
 		get Rng3Start() {
-			return this._shadowRoot.getElementById("builder_r3stval").value;
+			return this._shadowRoot.getElementById("builder_r3stval").valueAsNumber;
 		}
 		set Rng3End(newVal) {
 			this._shadowRoot.getElementById("builder_r3edval").value = newVal;
 		}
 		get Rng3End() {
-			return this._shadowRoot.getElementById("builder_r3edval").value;
+			return this._shadowRoot.getElementById("builder_r3edval").valueAsNumber;
 		}
 		set Rng1Col(newColor) {
 			this._shadowRoot.getElementById("builder_r1col").value = newColor;

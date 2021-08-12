@@ -129,11 +129,17 @@ var getScriptPromisify = (src) => {
 			if ("EndAngle" in changedProperties) {
 				this.$EndAngle = changedProperties["EndAngle"];
 			}
+			if ("PrimShow" in changedProperties) {
+				this.$PrimShow = changedProperties["PrimShow"];
+			}
+			if ("SecShow" in changedProperties) {
+				this.$SecShow = changedProperties["SecShow"];
+			}
 			
-			this.renderAmchart(this.$PrimValue, this.$SecValue, this.$BottomText, this.GaugeScaleStart, this.GaugeScaleEnd, this.$Rng1Start, this.$Rng1End, this.$Rng2Label, this.$Rng2Start, this.$Rng2End, this.$Rng3Label, this.$Rng3Start, this.$Rng3End, this.$Rng1Col, this.$Rng2Col, this.$Rng3Col, this.$PrimCol, this.$SecCol, this.$StAngle, this.$EndAngle);    
+			this.renderAmchart(this.$PrimValue, this.$SecValue, this.$BottomText, this.GaugeScaleStart, this.GaugeScaleEnd, this.$Rng1Start, this.$Rng1End, this.$Rng2Label, this.$Rng2Start, this.$Rng2End, this.$Rng3Label, this.$Rng3Start, this.$Rng3End, this.$Rng1Col, this.$Rng2Col, this.$Rng3Col, this.$PrimCol, this.$SecCol, this.$StAngle, this.$EndAngle, this.$PrimShow, this.$SecShow);    
         }
 		
-        async renderAmchart(pVal, sVal, bText, scStart, scEnd, r1Start, r1End, r2Lbl, r2Start, r2End, r3Lbl, r3Start, r3End, r1Col, r2Col, r3Col, pCol, sCol, sAngle, eAngle){
+        async renderAmchart(pVal, sVal, bText, scStart, scEnd, r1Start, r1End, r2Lbl, r2Start, r2End, r3Lbl, r3Start, r3End, r1Col, r2Col, r3Col, pCol, sCol, sAngle, eAngle, pShow, sShow){
 			
 			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
 			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
@@ -214,6 +220,7 @@ var getScriptPromisify = (src) => {
 						hand1.innerRadius = am4core.percent(25);
 						hand1.radius = am4core.percent(105);
 						hand1.pin.disabled = true;
+						hand1.visible = pShow;
 						// hand1.tooltipText = "{value}";
 						
 						var hand2 = chart.hands.push(new am4charts.ClockHand());
@@ -224,6 +231,7 @@ var getScriptPromisify = (src) => {
 						hand2.radius = am4core.percent(105);
 						hand2.startWidth = 2;
 						hand2.pin.disabled = true;
+						hand2.visible = sShow;
 						// hand2.tooltipText = "{value}";
 					});
         }

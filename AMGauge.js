@@ -24,7 +24,7 @@ var getScriptPromisify = (src) => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
-            
+            this._firstUpdate = true;
             this._props = {};
             // this._firstConnection = false;
         }
@@ -141,9 +141,12 @@ var getScriptPromisify = (src) => {
 		
         async renderAmchart(pVal, sVal, bText, scStart, scEnd, r1Start, r1End, r2Lbl, r2Start, r2End, r3Lbl, r3Start, r3End, r1Col, r2Col, r3Col, pCol, sCol, sAngle, eAngle, pShow, sShow){
 			
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+			if (this._firstUpdate) {
+				await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
+				await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
+				await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+				this._firstUpdate = false;
+			}
 			
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
 			var gauge = new am4core.ready(function() {

@@ -96,7 +96,7 @@ var getScriptPromisify = (src) => {
 				
 				var container = am4core.create(cdiv, am4core.Container);
 				container.width = am4core.percent(100);
-				container.height = kpi.length*90;
+				container.height = data.length*90;
 				container.layout = "vertical";
 				
 				for (var i=0; i<data.length; i++){

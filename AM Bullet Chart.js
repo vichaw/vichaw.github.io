@@ -11,40 +11,20 @@ var getScriptPromisify = (src) => {
 		<div id="chartdiv" style="width: 100% !important; height: inherit; " ></div>
 		`;
 	
-    class Amchart extends HTMLElement {
+    class AMBullet extends HTMLElement {
         constructor() {
             super();
 
             let shadowRoot = this.attachShadow({
                 mode: "open"
             });
-			
-			/* let src1="https://cdn.amcharts.com/lib/4/core.js";
-			let src2="https://cdn.amcharts.com/lib/4/charts.js";
-			let src3="https://cdn.amcharts.com/lib/4/themes/animated.js";
-
-			let script1 = document.createElement('script');
-			let script2 = document.createElement('script');
-			let script3 = document.createElement('script');
-
-			script1.type = 'text/javascript';
-			script2.type = 'text/javascript';
-			script3.type = 'text/javascript';
-
-			script1.src = src1;
-			script2.src = src2;
-			script3.src = src3; 
-			
-			shadowRoot.appendChild(script1);
-			shadowRoot.appendChild(script2);
-			shadowRoot.appendChild(script3); */
-			
+						
             shadowRoot.appendChild(template.content.cloneNode(true));
             this.addEventListener("click", event => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
-            
+            this._firstUpdate = true;
             this._props = {};
             // this._firstConnection = false;
         }
@@ -74,45 +54,36 @@ var getScriptPromisify = (src) => {
 
         //When the custom widget is updated, the Custom Widget SDK framework executes this function after the update
         onCustomWidgetAfterUpdate(changedProperties) {
-			// console.log("onCustomWidgetAfterUpdate")
-			// console.log("this._props prop = ", this._props);
+
 			this._props = { ...this._props, ...changedProperties };
-			// console.log("changedProperties = ", changedProperties);
-            //  if(this._firstConnection){
 			
-			if ("KPIs" in changedProperties) {
-				this.$KPIs = changedProperties["KPIs"];
+			if ("Data" in changedProperties) {
+				this.$Data = changedProperties["Data"];
 			}
-			if ("BaseData" in changedProperties) {
-				this.$BaseData = changedProperties["BaseData"];
+			if ("BsCol" in changedProperties) {
+				this.$BsCol = changedProperties["BsCol"];
 			}
-			if ("MedianData" in changedProperties) {
-				this.$MedianData = changedProperties["MedianData"];
+			if ("MedCol" in changedProperties) {
+				this.$MedCol = changedProperties["MedCol"];
 			}
-			if ("PriorData" in changedProperties) {
-				this.$PriorData = changedProperties["PriorData"];
+			if ("BpyCol" in changedProperties) {
+				this.$BpyCol = changedProperties["BpyCol"];
 			}
-			if ("Prior2Data" in changedProperties) {
-				this.$Prior2Data = changedProperties["Prior2Data"];
-			}
-			if ("MinData" in changedProperties) {
-				this.$MinData = changedProperties["MinData"];
-			}
-			if ("MaxData" in changedProperties) {
-				this.$MaxData = changedProperties["MaxData"];
-			}
-			if ("NumFormat" in changedProperties) {
-				this.$NumFormat = changedProperties["NumFormat"];
+			if ("B2pyCol" in changedProperties) {
+				this.$B2pyCol = changedProperties["B2pyCol"];
 			}
 						
-			this.renderAmchart(this.$KPIs, this.$BaseData, this.$MedianData, this.$PriorData, this.$Prior2Data, this.$MinData, this.$MaxData, this.$NumFormat);  
+			this.renderAmchart(this.$Data, this.$BsCol, this.$MedCol, this.BpyCol, this.B2pyCol);  
         }
 		
-        async renderAmchart(kpis, baseVal, medVal, prVal, pr2Val, minVal, maxVal, formVal){
+        async renderAmchart(txtData, basecol, medcol, pycol, py2col){
 			
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
-			await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+			if (this._firstUpdate) {
+				await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
+				await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
+				await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+				this._firstUpdate = false;
+			}
 			
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
 			var bullet = new am4core.ready(function() {
@@ -120,31 +91,17 @@ var getScriptPromisify = (src) => {
 				// Themes begin
 				am4core.useTheme(am4themes_animated);
 				// Themes end
-
-				var kpi = kpis;
-				var base = baseVal;
-				var median = medVal;
-				var prior = prVal;
-				var prior2y = pr2Val; 
-				var min = minVal;
-				var max = maxVal;
-				var format = formVal;
+				
+				var data = JSON.parse(txtData);
 				
 				var container = am4core.create(cdiv, am4core.Container);
 				container.width = am4core.percent(100);
 				container.height = kpi.length*90;
 				container.layout = "vertical";
 				
-				for (var i=0; i<kpi.length; i++){
+				for (var i=0; i<data.length; i++){
 					
-					var data = 	{
-							"category":kpi[i],
-							"value":base[i],
-							"median":median[i],
-							"prior":prior[i],
-							"2yprior":prior2y[i]
-						};
-					createBulletChart(container, "solid", min[i], max[i], format[i], data); 
+					createBulletChart(container, "solid", data[i].min, data[i].max, data[i].format, data[i].chdata, basecol, medcol, pycol, py2col); 
 				}
 
 				/* Create ranges 
@@ -160,7 +117,7 @@ var getScriptPromisify = (src) => {
 				*/
 
 				/* Create bullet chart with specified color type for background */
-				function createBulletChart(parent, colorType, min, max, nf, data) {
+				function createBulletChart(parent, colorType, min, max, nf, data, colbs, colmd, colpy, colpy2) {
 				  // var colors = ["#19d22800", "#b4dd1e00", "#f4fb1600", "#f6d32b00", "#fb711600"];
 
 				  /* Create chart instance */
@@ -197,6 +154,7 @@ var getScriptPromisify = (src) => {
 				  valueAxis.min = min;
 				  valueAxis.max = max;
 				  valueAxis.strictMinMax = true;
+				  valueAxis.numberFormatter = new am4core.NumberFormatter();
 				  valueAxis.numberFormatter.numberFormat = nf; // #,### or #'%'
 				  valueAxis.renderer.baseGrid.disabled = true;
 				  valueAxis.renderer.labels.template.fontFamily = "Calibri";
@@ -236,12 +194,16 @@ var getScriptPromisify = (src) => {
 				  var series = chart.series.push(new am4charts.ColumnSeries());
 				  series.dataFields.valueX = "value";
 				  series.dataFields.categoryY = "category";
-				  series.columns.template.fill = am4core.color("#046a38");
+				  series.columns.template.fill = am4core.color(colbs);
 				  series.columns.template.stroke = am4core.color("#000");
 				  series.columns.template.strokeWidth = 1;
 				  series.columns.template.strokeOpacity = 0.5;
 				  series.columns.template.height = am4core.percent(65);
-				  series.tooltipText = "{value}";
+				  if(nf.includes("%")){
+					  series.tooltipText = "{value}%";	
+				  }else{
+					  series.tooltipText = "{value}";
+				  }
 
 
 				  var series2 = chart.series.push(new am4charts.StepLineSeries());
@@ -251,10 +213,14 @@ var getScriptPromisify = (src) => {
 				  series2.noRisers = true;
 				  series2.startLocation = 0.0;
 				  series2.endLocation = 1.00;
-				  series2.tooltipText = "{valueX}";
+				  if(nf.includes("%")){
+					  series2.tooltipText = "{valueX}%";	
+				  }else{
+					  series2.tooltipText = "{valueX}";
+				  }
 				  series2.tooltip.getFillFromObject = false;
-				  series2.tooltip.background.fill = am4core.color("#7c7c7c");
-				  series2.stroke = am4core.color("#7c7c7c");
+				  series2.tooltip.background.fill = am4core.color(colmd);
+				  series2.stroke = am4core.color(colmd);
 				  
 				  var series3 = chart.series.push(new am4charts.StepLineSeries());
 				  series3.dataFields.valueX = "prior";
@@ -263,11 +229,15 @@ var getScriptPromisify = (src) => {
 				  series3.noRisers = true;
 				  series3.startLocation = 0.0;
 				  series3.endLocation = 1.00;
-				  series3.tooltipText = "{valueX}";
+				  if(nf.includes("%")){
+					  series3.tooltipText = "{valueX}%";	
+				  }else{
+					  series3.tooltipText = "{valueX}";
+				  }
 				  series3.tooltip.getFillFromObject = false;
-				  series3.tooltip.background.fill = am4core.color("#007cb0");
+				  series3.tooltip.background.fill = am4core.color(colpy);
 				  series3.tooltip.pointerOrientation = "up";
-				  series3.stroke = am4core.color("#007cb0");
+				  series3.stroke = am4core.color(colpy);
 				  
 				  var series4 = chart.series.push(new am4charts.StepLineSeries());
 				  series4.dataFields.valueX = "2yprior";
@@ -276,11 +246,15 @@ var getScriptPromisify = (src) => {
 				  series4.noRisers = true;
 				  series4.startLocation = 0.0;
 				  series4.endLocation = 1.00;
-				  series4.tooltipText = "{valueX}";
+				  if(nf.includes("%")){
+					  series4.tooltipText = "{valueX}%";	
+				  }else{
+					  series4.tooltipText = "{valueX}";
+				  }
 				  series4.tooltip.getFillFromObject = false;
-				  series4.tooltip.background.fill = am4core.color("#86bc25");
+				  series4.tooltip.background.fill = am4core.color(colpy2);
 				  series4.tooltip.pointerOrientation = "down";
-				  series4.stroke = am4core.color("#86bc25");
+				  series4.stroke = am4core.color(colpy2);
 
 				  chart.cursor = new am4charts.XYCursor()
 				  chart.cursor.lineX.disabled = true;
@@ -293,5 +267,5 @@ var getScriptPromisify = (src) => {
 			});
         }
     }
-    customElements.define("com-dtt-ambullet", Amchart);
+    customElements.define("com-dtt-ambullet", AMBullet);
 })();

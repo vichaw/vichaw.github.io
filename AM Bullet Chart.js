@@ -25,7 +25,8 @@ var styles = 'html.sap-desktop body ::-webkit-scrollbar{width:.75rem;height:.75r
 		} ::-webkit-scrollbar-track { \
 		  background: black !important; \
 		}';
-         
+ 
+addStyle(styles);
 
 (function() {
 	
@@ -50,7 +51,6 @@ var styles = 'html.sap-desktop body ::-webkit-scrollbar{width:.75rem;height:.75r
             this._firstUpdate = true;
             this._props = {};
 		
-	    this.addStyle(styles);
             // this._firstConnection = false;
         }
        

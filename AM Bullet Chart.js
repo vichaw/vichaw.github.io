@@ -4,6 +4,29 @@ var getScriptPromisify = (src) => {
 	  })
 	}
 
+function addStyle(styles) {
+             
+            /* Create style document */
+            var css = document.createElement('style');
+            css.type = 'text/css';
+         
+            if (css.styleSheet)
+                css.styleSheet.cssText = styles;
+            else
+                css.appendChild(document.createTextNode(styles));
+             
+            /* Append style to the tag name */
+            document.getElementsByTagName("head")[0].appendChild(css);
+        }
+
+var styles = 'html.sap-desktop body ::-webkit-scrollbar{width:.75rem;height:.75rem} ::-webkit-scrollbar-thumb { \
+		  background: #5c5c5cee !important;  \
+		  border-radius: 4px; \
+		} ::-webkit-scrollbar-track { \
+		  background: black !important; \
+		}';
+         
+
 (function() {
 	
 	let template = document.createElement("template");
@@ -26,6 +49,8 @@ var getScriptPromisify = (src) => {
             });    
             this._firstUpdate = true;
             this._props = {};
+		
+	    function() { addStyle(styles) };
             // this._firstConnection = false;
         }
        

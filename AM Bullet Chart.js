@@ -50,7 +50,7 @@ var styles = 'html.sap-desktop body ::-webkit-scrollbar{width:.75rem;height:.75r
             this._firstUpdate = true;
             this._props = {};
 		
-	    function() { addStyle(styles) };
+	    this.addStyle(styles);
             // this._firstConnection = false;
         }
        

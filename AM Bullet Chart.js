@@ -3,7 +3,7 @@ var getScriptPromisify = (src) => {
 		$.getScript(src, resolve);
 	  })
 	}
-
+	
 function addStyle(styles) {
              
             /* Create style document */
@@ -50,7 +50,6 @@ addStyle(styles);
             });    
             this._firstUpdate = true;
             this._props = {};
-		
             // this._firstConnection = false;
         }
        
@@ -104,13 +103,14 @@ addStyle(styles);
         async renderAmchart(txtData, basecol, medcol, pycol, py2col){
 			
 			if (this._firstUpdate) {
-				await getScriptPromisify("https://cdn.amcharts.com/lib/4/core.js");
-				await getScriptPromisify("https://cdn.amcharts.com/lib/4/charts.js");
-				await getScriptPromisify("https://cdn.amcharts.com/lib/4/themes/animated.js");
+				await getScriptPromisify("https://oimbobjqa.deloitteresources.com/export_resources/amcharts/core.js");
+				await getScriptPromisify("https://oimbobjqa.deloitteresources.com/export_resources/amcharts/charts.js");
+				await getScriptPromisify("https://oimbobjqa.deloitteresources.com/export_resources/amcharts/themes/animated.js");
 				this._firstUpdate = false;
 			}
 			
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
+                        am4core.addLicense("CH292261191");
 			var bullet = new am4core.ready(function() {
 				
 				// Themes begin
@@ -147,8 +147,8 @@ addStyle(styles);
 
 				  /* Create chart instance */
 				  var chart = container.createChild(am4charts.XYChart);
-				  chart.paddingRight = 25;
-				  chart.paddingLeft = 25;
+				  chart.paddingRight = 20;
+				  chart.paddingLeft = 20;
 				  chart.paddingTop = 0;
 				  chart.paddingBottom = 0;
 				  chart.width = am4core.percent(100);
@@ -160,7 +160,6 @@ addStyle(styles);
 				  /* Create axes */
 				  var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
 				  categoryAxis.dataFields.category = "category";
-				  categoryAxis.renderer.minGridDistance = 30;
 				  categoryAxis.renderer.grid.template.disabled = true;
 				  categoryAxis.renderer.labels.template.rotation = 0;
 				  categoryAxis.renderer.labels.template.wrap = true;
@@ -172,6 +171,54 @@ addStyle(styles);
 				  categoryAxis.renderer.labels.template.maxWidth = 200;
 				  categoryAxis.renderer.labels.template.minWidth = 200;
 				  categoryAxis.cursorTooltipEnabled = false;
+				  
+				  var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
+				  categoryAxis2.dataFields.category = "basecat";
+				  //categoryAxis2.renderer.opposite = true;
+				  categoryAxis2.renderer.grid.template.disabled = true;
+				  categoryAxis2.renderer.labels.template.rotation = 0;
+				  categoryAxis2.renderer.labels.template.wrap = true;
+				  categoryAxis2.renderer.labels.template.maxWidth = 75;
+				  categoryAxis2.renderer.labels.template.minWidth = 75;
+				  categoryAxis2.renderer.labels.template.fontFamily = "Calibri";
+				  categoryAxis2.renderer.labels.template.fontSize = 18;
+				  categoryAxis2.renderer.labels.template.textAlign = "middle";
+				  categoryAxis2.renderer.labels.template.fill = am4core.color("#fff");
+				  categoryAxis2.renderer.labels.template.maxWidth = 100;
+				  categoryAxis2.renderer.labels.template.minWidth = 100; 
+				  categoryAxis2.cursorTooltipEnabled = false;
+				  
+				  var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
+				  categoryAxis3.dataFields.category = "priorcat";
+				  categoryAxis3.renderer.opposite = true;
+				  categoryAxis3.renderer.grid.template.disabled = true;
+				  categoryAxis3.renderer.labels.template.rotation = 0;
+				  categoryAxis3.renderer.labels.template.wrap = true;
+				  categoryAxis3.renderer.labels.template.maxWidth = 75;
+				  categoryAxis3.renderer.labels.template.minWidth = 75;
+				  categoryAxis3.renderer.labels.template.fontFamily = "Calibri";
+				  categoryAxis3.renderer.labels.template.fontSize = 18;
+				  categoryAxis3.renderer.labels.template.textAlign = "middle";
+				  categoryAxis3.renderer.labels.template.fill = am4core.color("#fff");
+				  categoryAxis3.renderer.labels.template.maxWidth = 100;
+				  categoryAxis3.renderer.labels.template.minWidth = 100; 
+				  categoryAxis3.cursorTooltipEnabled = false;
+				  
+				  var categoryAxis4 = chart.yAxes.push(new am4charts.CategoryAxis());
+				  categoryAxis4.dataFields.category = "2ypriorcat";
+				  categoryAxis4.renderer.opposite = true;
+				  categoryAxis4.renderer.grid.template.disabled = true;
+				  categoryAxis4.renderer.labels.template.rotation = 0;
+				  categoryAxis4.renderer.labels.template.wrap = true;
+				  categoryAxis4.renderer.labels.template.maxWidth = 75;
+				  categoryAxis4.renderer.labels.template.minWidth = 75;
+				  categoryAxis4.renderer.labels.template.fontFamily = "Calibri";
+				  categoryAxis4.renderer.labels.template.fontSize = 18;
+				  categoryAxis4.renderer.labels.template.textAlign = "middle";
+				  categoryAxis4.renderer.labels.template.fill = am4core.color("#fff");
+				  categoryAxis4.renderer.labels.template.maxWidth = 100;
+				  categoryAxis4.renderer.labels.template.minWidth = 100; 
+				  categoryAxis4.cursorTooltipEnabled = false;
 
 				  var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
 				  valueAxis.renderer.minGridDistance = 30;
@@ -184,7 +231,7 @@ addStyle(styles);
 				  valueAxis.renderer.baseGrid.disabled = true;
 				  valueAxis.renderer.labels.template.fontFamily = "Calibri";
 				  valueAxis.renderer.labels.template.fontSize = 13;
-				  valueAxis.renderer.minGridDistance = 250;
+				  valueAxis.renderer.minGridDistance = 145;
 				  valueAxis.renderer.labels.template.fill = am4core.color("#fff");
 				  
 
@@ -216,6 +263,31 @@ addStyle(styles);
 				  */
 
 				  /* Create series */
+				  
+				  var series5 = chart.series.push(new am4charts.ColumnSeries());
+				  series5.dataFields.valueX = "valuemin";
+				  series5.dataFields.categoryY = "category";
+				  series5.columns.template.fill = am4core.color("#252525");
+				  series5.columns.template.stroke = am4core.color("#000");
+				  series5.clustered = false;
+				  // series5.columns.template.dy = -22.5;
+				  series5.columns.template.fillOpacity = 1;
+				  series5.columns.template.strokeWidth = 1;
+				  series5.columns.template.strokeOpacity = 0.5;
+				  series5.columns.template.height = am4core.percent(100);
+				  
+				  var series6 = chart.series.push(new am4charts.ColumnSeries());
+				  series6.dataFields.valueX = "valuemax";
+				  series6.dataFields.categoryY = "category";
+				  series6.columns.template.fill = am4core.color("#3E3E3E");
+				  series6.columns.template.stroke = am4core.color("#000");
+				  series6.clustered = false;
+				  // series5.columns.template.dy = -22.5;
+				  series6.columns.template.fillOpacity = 1;
+				  series6.columns.template.strokeWidth = 1;
+				  series6.columns.template.strokeOpacity = 0.5;
+				  series6.columns.template.height = am4core.percent(100);
+				  
 				  var series = chart.series.push(new am4charts.ColumnSeries());
 				  series.dataFields.valueX = "value";
 				  series.dataFields.categoryY = "category";
@@ -224,11 +296,13 @@ addStyle(styles);
 				  series.columns.template.strokeWidth = 1;
 				  series.columns.template.strokeOpacity = 0.5;
 				  series.columns.template.height = am4core.percent(65);
-				  if(nf.includes("%")){
+				  /* if(nf.includes("%")){
 					  series.tooltipText = "{value}%";	
-				  }else{
+				  }else if (nf.includes("bps"){
+					  series.tooltipText = "{value} bps";
+				  }else {
 					  series.tooltipText = "{value}";
-				  }
+				  } */
 
 
 				  var series2 = chart.series.push(new am4charts.StepLineSeries());
@@ -238,11 +312,12 @@ addStyle(styles);
 				  series2.noRisers = true;
 				  series2.startLocation = 0.0;
 				  series2.endLocation = 1.00;
-				  if(nf.includes("%")){
+				  series2.tooltipText = "{medTtip}";
+				  /* if(nf.includes("%")){
 					  series2.tooltipText = "{valueX}%";	
 				  }else{
 					  series2.tooltipText = "{valueX}";
-				  }
+				  } */
 				  series2.tooltip.getFillFromObject = false;
 				  series2.tooltip.background.fill = am4core.color(colmd);
 				  series2.stroke = am4core.color(colmd);
@@ -254,14 +329,14 @@ addStyle(styles);
 				  series3.noRisers = true;
 				  series3.startLocation = 0.0;
 				  series3.endLocation = 1.00;
-				  if(nf.includes("%")){
+				  /* if(nf.includes("%")){
 					  series3.tooltipText = "{valueX}%";	
 				  }else{
 					  series3.tooltipText = "{valueX}";
-				  }
+				  } 
 				  series3.tooltip.getFillFromObject = false;
 				  series3.tooltip.background.fill = am4core.color(colpy);
-				  series3.tooltip.pointerOrientation = "up";
+				  series3.tooltip.pointerOrientation = "up"; */
 				  series3.stroke = am4core.color(colpy);
 				  
 				  var series4 = chart.series.push(new am4charts.StepLineSeries());
@@ -271,14 +346,14 @@ addStyle(styles);
 				  series4.noRisers = true;
 				  series4.startLocation = 0.0;
 				  series4.endLocation = 1.00;
-				  if(nf.includes("%")){
+				  /* if(nf.includes("%")){
 					  series4.tooltipText = "{valueX}%";	
 				  }else{
 					  series4.tooltipText = "{valueX}";
-				  }
+				  } 
 				  series4.tooltip.getFillFromObject = false;
 				  series4.tooltip.background.fill = am4core.color(colpy2);
-				  series4.tooltip.pointerOrientation = "down";
+				  series4.tooltip.pointerOrientation = "down"; */
 				  series4.stroke = am4core.color(colpy2);
 
 				  chart.cursor = new am4charts.XYCursor()

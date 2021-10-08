@@ -8,7 +8,7 @@
 					<td>
 						<div>Data:</div>
 						<div>
-							<textarea id="builder_data"style="min-height: 150px;width: 100%;">[{"min":0, "max":100, "format": "#'%'", "chdata":{"category": "KPI1", "value": 65, "median": 18, "prior":30, "2yprior":90}},{"min":-10, "max":110, "format": "#,###", "chdata":{"category": "KPI2", "value": -5, "median": 88, "prior":30, "2yprior":90}}]</textarea>
+							<textarea id="builder_data"style="min-height: 150px;width: 100%;">[{"min":0,"max":100,"format":"#,###","chdata":{"category":"KPI1","value":65,"basecat":"65","median":18,"medTtip":"18","prior":30,"priorcat":"30","2yprior":90,"2ypriorcat":"90","valuemin":0,"valuemax":100}},{"min":-10,"max":110,"format":"#,###","chdata":{"category":"KPI2","value":-5,"basecat":"-5","median":88,"medTtip":"88","prior":30,"priorcat":"30","2yprior":90,"2ypriorcat":"90","valuemin":-10,"valuemax":110}}]</textarea>
 						</div>
 						<div>
 							<button type="button" id="builder_data_submit">Set Data</button>

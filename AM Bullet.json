@@ -1,0 +1,72 @@
+{
+   "id":"com.dtt.ambullet",
+   "version":"2.0.0",
+   "name":"Am Bullet",
+   "description":"AM Bullet Chart",
+   "newInstancePrefix":"Ambullet",
+   "icon":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAvCAIAAADRtytBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHJSURBVGhD7dhLSwJRGAbgKQjxVgqNlZGhhF2QkARF0ECi/oCLtrWriLbVP2jZplrmJoIoiKhFiwoUoaCCKAoRlS4IZppU3kidgvlOZBtJRfyG8zAw857ZnJe5TwPHcUx9u40cxJJBCES30qJRmiEUQ1Bp+2rK/3IMgbBr52y6WQjFGmEtIFApX8jn8rn6XApcgZ/kb3muaMLf84cdPyeeZWni8tHHD9WbSfublv2EQHj94sNrCQSGGerqPVtw8dvCPfGEhFbCgFbCgFbCgFbCgFbCQICV4E18zb0TTkT5oXojEe8yjX+/ags5ayZrhcAwagU7Pezkt+lXLQYIjtLF00bk/Q4CoWdHelodEIohqPRf1akUjHn80SMIRJu839g5DqGGqlPJG1p1B5chEHp21Dm4AqGG6KMWA+HexE9854n0Bz9Uhnhm/zm5B4FoERk7ZDMQKuPQmxQSOYRSoFKFvybHDCmbPg2BCEabXJ5mCJU5nV83afoglEKvJQxoJQxoJQxoJQxoJQxoJQwEWAnexG/CgWQ2ww+V4T6xFYhvQiBUMrNBtQihMga1TioSQyiF/nvAoDpH6TX1EE+FIBBSEdsuH4BQMwzzBbwWRL2Ij+HfAAAAAElFTkSuQmCC",
+   "vendor":"AMCHARTS",
+   "eula":"",
+   "license":"",
+   "webcomponents":[
+      {
+         "kind":"main",
+         "tag":"com-dtt-ambullet",
+         "url":"https://oimbobjqa.deloitteresources.com/export_resources/amcharts/AMBulletChart.js",
+         "integrity":"",
+         "ignoreIntegrity":true
+      },
+	  {
+		"kind": "builder",
+		"tag": "com-dtt-ambullet-bps",
+		"url": "https://oimbobjqa.deloitteresources.com/export_resources/amcharts/AMBullet_Builder.js",
+		"integrity": "",
+		"ignoreIntegrity": true
+	  }
+   ],
+   "properties":{
+      "Data":{
+         "type":"string",
+         "description":"KPI names shown on the chart",
+         "default":"[{\"min\":0,\"max\":100,\"format\":\"#,###\",\"chdata\":{\"category\":\"KPI1\",\"value\":65,\"basecat\":\"65\",\"median\":18,\"medTtip\":\"18\",\"prior\":30,\"priorcat\":\"30\",\"2yprior\":90,\"2ypriorcat\":\"90\",\"valuemin\":0,\"valuemax\":100}},{\"min\":-10,\"max\":110,\"format\":\"#,###\",\"chdata\":{\"category\":\"KPI2\",\"value\":-5,\"basecat\":\"-5\",\"median\":88,\"medTtip\":\"88\",\"prior\":30,\"priorcat\":\"30\",\"2yprior\":90,\"2ypriorcat\":\"90\",\"valuemin\":-10,\"valuemax\":110}}]"
+      },
+	  "BsCol":{
+		"type":"string",
+		"description":"Base Color of the chart",
+		"default":"#046a38"
+	  },
+	  "MedCol":{
+         "type":"string",
+         "description":"Color value of the median indicator",
+         "default":"#43B02A"
+      },
+	  "BpyCol":{
+         "type":"string",
+         "description":"Color value of the base prior year indicator",
+         "default":"#007CB0"
+      },
+	  "B2pyCol":{
+         "type":"string",
+         "description":"Color value of the base prior 2 year indicator",
+         "default":"#86BC25"
+      }
+   },
+   "methods":{
+		"setData": {
+			"description": "Sets the data for the chart.",
+			"parameters": [
+				{
+					"name": "newData",
+					"type": "string",
+					"description": "New chart data"
+				}
+			],
+			"body": "this.Data = newData;"
+		}
+   },
+   "events":{
+      "onClick":{
+         "description":"Called when the user clicks the amchart."
+      }
+   }
+}

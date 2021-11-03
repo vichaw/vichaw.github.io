@@ -1,0 +1,125 @@
+<form id="form">
+	<fieldset>
+	<legend style="font-family: calibri; font-weight:bold;">Gauge Properties</legend>
+	<table style="font-family: calibri">
+		<tr>
+			<td>Primary Value</td>
+			<td>
+				<input id="builder_prval" type="number" size="5" maxlength="5" value=55>
+			</td>
+		</tr>
+		<tr>
+			<td>Show Primary</td>
+			<td>
+				<input id="builder_prshow" type="checkbox" checked>
+			</td>
+		</tr>
+		<tr>
+			<td>Secondary Value</td>
+			<td>
+				<input id="builder_scval" type="number" size="5" maxlength="5" value="45">
+			</td>
+		</tr>
+		<tr>
+			<td>Show Secondary</td>
+			<td>
+				<input id="builder_scshow" type="checkbox" checked>
+			</td>
+		</tr>
+		<tr>
+			<td>Range1: Start Value
+			<br/>	<input id="builder_r1stval" type="number" size="5" maxlength="5" value="0">
+			</td>
+			<td>End Value
+			<br/>	<input id="builder_r1edval" type="number" size="5" maxlength="5" value="45">
+			</td>
+		</tr>
+		<tr>
+			<td>Range2: Start Value
+			<br/>	<input id="builder_r2stval" type="number" size="5" maxlength="5" value="45">
+			</td>
+			<td>End Value
+			<br/>	<input id="builder_r2edval" type="number" size="5" maxlength="5" value="75">
+			</td>
+		</tr>
+		<tr>
+			<td>Set Range3 Start Value
+			<br/>	<input id="builder_r3stval" type="number" size="5" maxlength="5" value="75">
+			</td>
+			<td>End Value
+			<br/>	<input id="builder_r3edval" type="number" size="5" maxlength="5" value="100">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<br/><div>
+					<b>Define Colors</b>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>Primary color:</div>
+			</td>
+			<td>
+				<input id="builder_prcol"type="color"value="#FFFFFF">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>Secondary color:</div>
+			</td>
+			<td>
+				<input id="builder_sccol"type="color"value="#FFFF0000">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>Range1 color:</div>
+			</td>
+			<td>
+				<input id="builder_r1col"type="color"value="#DA291C">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>Range2 color:</div>
+			</td>
+			<td>
+				<input id="builder_r2col"type="color"value="#FFCD00">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div>Range3 color:</div>
+			</td>
+			<td>
+				<input id="builder_r3col"type="color"value="#43B02A">
+			</td>
+		</tr>
+	</table>
+	<input type="submit" style="display:none;">
+	</fieldset>
+</form>
+
+<p id="demo"></p>
+<style>
+	:host {
+	display: block;
+	padding: 1em 1em 1em 1em;
+	}
+	td{
+		padding: 4px;
+	}
+	input{
+		width: 100px;
+	}
+</style>
+<script>
+	document.getElementById("builder_prshow").addEventListener("change", displayVal);
+	function displayVal() {
+		let val = document.getElementById("builder_prshow").checked;
+		console.log(typeof val);
+	  document.getElementById("demo").innerHTML = val;
+	}
+</script>

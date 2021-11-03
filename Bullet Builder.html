@@ -1,0 +1,54 @@
+<html>
+	<form id="form">
+		<fieldset>
+			<legend style="font-family: calibri; font-weight:bold;">Bullet Chart Properties</legend>
+			<table style="width: 100%; font-family: calibri;">
+				<tr>
+					<td>
+						<div>Data:</div>
+						<div>
+							<textarea id="bps_data"style="min-height: 150px;width: 100%;">[{"min":0, "max":100, "format": "#'%'", "chdata":{"category": "Godzilla", "value": 65, "median": 18, "prior":30, "2yprior":90}},{"min":-10, "max":110, "format": "#'%'", "chdata":{"category": "King Kong", "value": -5, "median": 88, "prior":30, "2yprior":90}},{"min":0, "max":200, "format": "#,###", "chdata":{"category": "Star Wars", "value": 110, "median": 58, "prior":133, "2yprior":195}},{"min":0, "max":200, "format": "#,###", "chdata":{"category": "Avengers", "value": 150, "median": 100, "prior":145, "2yprior":90}},{"min":0, "max":100, "format": "#'%'", "chdata":{"category": "Jurassic Park", "value": 65, "median": 18, "prior":30, "2yprior":90}},{"min":-50, "max":110, "format": "#,###", "chdata":{"category": "Matrix", "value": -35, "median": 28, "prior":-50, "2yprior":90}},{"min":0, "max":200, "format": "#'%'", "chdata":{"category": "Avatar", "value": 110, "median": 58, "prior":133, "2yprior":195}},{"min":0, "max":1000, "format": "#,###", "chdata":{"category": "Some long movie name", "value": 950, "median": 650, "prior":745, "2yprior":390}}]</textarea>
+						</div>
+						<div>
+							<button type="button" id="bps_data_submit">Set Data</button>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<br/><div>
+							<b>Define Colors</b>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Base color:</div>
+						<input id="builder_prcol"type="color"value="#046a38">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Median color:</div>
+						<input id="builder_prcol"type="color"value="#7c7c7c">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Base PY color:</div>
+						<input id="builder_prcol"type="color"value="#007cb0">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div>Base 2PY color:</div>
+						<input id="builder_prcol"type="color"value="#86bc25">
+					</td>
+				</tr>
+				
+		</fieldset>
+	</form>
+	<style>:host{display:block;padding:1em 1em 1em 1em;} input:out-of-range{background-color:rgba(255,0,0,0.25);}</style>
+</html>
+
+"#'+"'%'"+'"

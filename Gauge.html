@@ -1,0 +1,119 @@
+<html>
+<!-- Styles -->
+	<style>
+	#chartdiv {
+	  width: 100%;
+	  height: 400px;
+	  font-family: calibri;
+	}
+
+	</style>
+	
+	<!-- HTML -->
+	<body bgcolor = "#000000">
+		<div id="chartdiv"></div>
+	</body>
+
+
+	<!-- Resources -->
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+	<!-- Chart code -->
+	<script>
+	am4core.addLicense("CH292261191"); 
+	var gauge = new am4core.ready(function() {
+	
+		am4core.useTheme(am4themes_animated);
+		
+		// create chart
+		var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+		chart.innerRadius = am4core.percent(65);
+		// chart.radius = am4core.percent(75);
+		chart.startAngle = -180;
+		chart.endAngle = 0;
+		chart.showTooltipOn = "always";
+		chart.tooltipText = "texxxxt";
+		
+		var axis = chart.xAxes.push(new am4charts.ValueAxis());
+		axis.min = 5000;
+		axis.max = 10000;
+		axis.strictMinMax = true;
+		axis.renderer.labels.template.fill = am4core.color("#fff");
+		axis.renderer.labels.template.fontFamily = "Calibri";
+		axis.renderer.labels.template.fontSize = 16;
+		axis.renderer.labels.template.visible = true;
+		axis.renderer.minGridDistance = 350;
+		axis.numberFormatter.numberFormat = "#,###"; // #,### or #'%'
+		axis.renderer.labels.template.radius = 18;
+		/* axis.renderer.inside = true;
+		axis.renderer.line.strokeOpacity = 1;
+		axis.renderer.ticks.template.strokeOpacity = 1;
+		axis.renderer.ticks.template.length = 10;
+		axis.renderer.labels.template.radius = 30;
+		axis.renderer.line.stroke = "#FFFFFF";
+		axis.renderer.ticks.stroke = "#FFFFFF"; */
+		
+
+		var label = chart.radarContainer.createChild(am4core.Label);
+		label.isMeasured = true;
+		label.fontSize = 22;
+		label.x = am4core.percent(50);
+		label.y = am4core.percent(100);
+		label.horizontalCenter = "middle";
+		label.verticalCenter = "bottom";
+		label.text = "6,440 m";
+		label.fill = "#D8D8D8";
+		
+		var range0 = axis.axisRanges.create();
+		range0.value = 5000;
+		range0.endValue = 6281;
+		range0.axisFill.fillOpacity = 1;
+		range0.axisFill.fill = "#008000";
+		// range0.label.text = "text";
+		// range0.label.fill = am4core.color("#0c0");
+
+		var range1 = axis.axisRanges.create();
+		range1.value = 6281;
+		range1.endValue = 10000;
+		range1.axisFill.fillOpacity = 1;
+		range1.axisFill.fill = "#00CC00";
+		range1.label.text = "Plan: 6,281 m"; //Shown at start of Range
+		range1.label.fill = am4core.color("#FFFF00");
+
+		var range2 = axis.axisRanges.create();
+		range2.value = 10000;
+		range2.endValue = 10000;
+		range2.axisFill.fillOpacity = 1;
+		range2.axisFill.fill = "#00EE00";
+		range2.label.text = ""; //Shown at start of Range
+		range2.label.fill = am4core.color("#FFFF0000");
+		// range2.label.text = "text2";
+
+		var hand1 = chart.hands.push(new am4charts.ClockHand());
+		hand1.fill = am4core.color("#FFFFFF");
+		hand1.stroke = am4core.color("#FFFFFF");
+		hand1.value = 6440;
+		hand1.innerRadius = am4core.percent(25);
+		hand1.radius = am4core.percent(105);
+		hand1.pin.disabled = true;
+		hand1.visible = true;
+		// hand1.tooltipText = "{value}";
+		
+		var hand2 = chart.hands.push(new am4charts.ClockHand());
+		hand2.fill = am4core.color("#FFFF00");
+		hand2.stroke = am4core.color("#FFFF00");
+		hand2.value = 6281;
+		hand2.innerRadius = am4core.percent(58);
+		hand2.radius = am4core.percent(105);
+		hand2.startWidth = 2;
+		hand2.pin.disabled = true;
+		hand2.visible = true;
+		// hand2.tooltipText = "{value}";
+		
+	});
+	</script>
+
+	
+<html>

@@ -149,6 +149,7 @@ var getScriptPromisify = (src) => {
 			}
 			
 			var cdiv = this.shadowRoot.getElementById('chartdiv');
+			am4core.addLicense("CH292261191"); 
 			var gauge = new am4core.ready(function() {
 	
 						am4core.useTheme(am4themes_animated);

@@ -1,0 +1,300 @@
+<html>
+<!-- Styles -->
+	<style>
+	#chartdiv {
+	  width: 1200px;
+	  height: 720px;
+	}
+
+	</style>
+
+	<!-- Resources -->
+	<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+	<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+	<!-- Chart code -->
+	<script>
+	am4core.addLicense("CH292261191"); 
+	var bullet = new am4core.ready(function() {
+
+		// Themes begin
+		am4core.useTheme(am4themes_animated);
+		// Themes end
+		
+		
+		/* var data = [{"min":0, "max":100, "format": "#'%'", "chdata":{"category": "Godzilla", "value": 65, "median": 18, "prior":30, "2yprior":90}},
+					{"min":-10, "max":110, "format": "#'%'", "chdata":{"category": "King Kong", "value": -5, "median": 88, "prior":30, "2yprior":90}},
+					{"min":0, "max":200, "format": "#,###", "chdata":{"category": "Star Wars", "value": 110, "median": 58, "prior":133, "2yprior":195}},
+					{"min":0, "max":200, "format": "#,###", "chdata":{"category": "Avengers", "value": 150, "median": 100, "prior":145, "2yprior":90}},
+					{"min":0, "max":100, "format": "#'%'", "chdata":{"category": "Jurassic Park", "value": 65, "median": 18, "prior":30, "2yprior":90}},
+					{"min":-50, "max":110, "format": "#,###", "chdata":{"category": "Matrix", "value": -35, "median": 28, "prior":-50, "2yprior":90}},
+					{"min":0, "max":200, "format": "#'%'", "chdata":{"category": "Avatar", "value": 110, "median": 58, "prior":133, "2yprior":195}},
+					{"min":0, "max":1000, "format": "#,###", "chdata":{"category": "Some long movie name", "value": 950, "median": 650, "prior":745, "2yprior":390}}]; 
+		*/
+		
+		var datatext = '[{"min":0,"max":100,"format":"#'+"'%'"+'","chdata":{"category":"Godzilla","value":65,"valuecat":"6,215 M","median":18,"prior":30,"priorcat":"30 M","2yprior":90,"2ypriorcat":"90 M","valuemin":-5,"valuemax":100,"medlb":"30 k"}},{"min":-10,"max":110,"format":"#'+"'%'"+'","chdata":{"category":"King Kong","value":-5,"valuecat":"65 M","median":88,"prior":30,"priorcat":"30 M","2yprior":90,"2ypriorcat":"90 M","valuemin":-10,"valuemax":110,"priorlb":"30 m"}},{"min":0,"max":200,"format":"#,###","chdata":{"category":"Star Wars","value":110,"valuecat":"65 M","median":58,"prior":133,"priorcat":"30 M","2yprior":195,"2ypriorcat":"90 M","valuemin":-5,"valuemax":200,"priorlb":30}},{"min":0,"max":200,"format":"#,###","chdata":{"category":"Avengers","value":150,"valuecat":"65 M","median":100,"prior":145,"priorcat":"30 M","2yprior":90,"2ypriorcat":"90 M","valuemin":-5,"valuemax":200,"priorlb":30}},{"min":0,"max":100,"format":"#'+"'%'"+'","chdata":{"category":"Jurassic Park","value":65,"valuecat":"65 M","median":18,"prior":30,"priorcat":"30 M","2yprior":90,"2ypriorcat":"90 M","valuemin":-5,"valuemax":100,"priorlb":30}},{"min":-55,"max":110,"format":"#,###","chdata":{"category":"Matrix","value":-35,"valuecat":"65 M","median":28,"prior":-50,"priorcat":"30 M","2yprior":90,"2ypriorcat":"90 M","valuemin":-55,"valuemax":110,"priorlb":30}},{"min":0,"max":200,"format":"#'+"'bps'"+'","chdata":{"category":"Avatar","value":110,"valuecat":"65 M","median":58,"prior":133,"priorcat":"30 M","2yprior":195,"2ypriorcat":"90 M","valuemin":-5,"valuemax":200,"priorlb":30}},{"min":0,"max":1000,"format":"#,###","chdata":{"category":"Some long movie name","value":950,"valuecat":"65 M","median":650,"prior":745,"priorcat":"30 M","2yprior":390,"2ypriorcat":"90 M","valuemin":-5,"valuemax":1000,"priorlb":30}}]';
+		
+		var data = JSON.parse(datatext);
+		console.log(typeof data);
+		
+		/*	
+		var min = [0,-10,0,0,0,-50,0,0];
+		var max = [100,110,200,200,100,110,200,1000];
+		var format = ["#'%'","#'%'","#,###","#,###","#'%'","#,###","#'%'","#,###"];
+		var kpi = ["Godzilla","King Kong","Star Wars","Avengers","Jurassic Park","Matrix","Avatar","Some long move name"];
+		var base = [65,-5,110,150,65,-35,110,950];
+		var median = [18,88,58,100,18,28,58,650];
+		var prior = [30,30,133,145,30,-50,133,745];
+		var prior2y = [90,90,195,90,90,90,195,390]; */
+		
+		var container = am4core.create("chartdiv", am4core.Container);
+		container.width = am4core.percent(100);
+		container.height = data.length*90;
+		container.layout = "vertical";
+		
+
+		for (var i=0; i<data.length; i++){
+			/*
+			var data = 	{
+							"category":kpi[i],
+							"value":base[i],
+							"median":median[i],
+							"prior":prior[i],
+							"2yprior":prior2y[i]
+						};*/
+			createBulletChart(container, "solid", data[i].min, data[i].max, data[i].format, data[i].chdata);
+		}
+		/*
+		createBulletChart(container, "solid", 0, 100, data[0]);
+		createBulletChart(container, "solid", -10, 110, data[1]);
+		createBulletChart(container, "gradient", 0, 200, data[2]);
+		createBulletChart(container, "gradient", 0, 200, data[3]); 
+		*/
+		/* Create ranges 
+		function createRange(axis, from, to, color) {
+		  var range = axis.axisRanges.create();
+		  range.value = from;
+		  range.endValue = to;
+		  range.axisFill.fill = color;
+		  range.axisFill.fillOpacity = 0.8;
+		  range.label.disabled = true;
+		  range.grid.disabled = true;
+		}
+		*/
+
+		/* Create bullet chart with specified color type for background */
+		function createBulletChart(parent, colorType, min, max, nf, data) {
+		  // var colors = ["#19d22800", "#b4dd1e00", "#f4fb1600", "#f6d32b00", "#fb711600"];
+
+		  /* Create chart instance */
+		  var chart = container.createChild(am4charts.XYChart);
+		  chart.paddingRight = 25;
+		  chart.paddingLeft = 25;
+		  chart.paddingTop = 0;
+		  chart.paddingBottom = 0;
+		  chart.width = am4core.percent(100);
+		  chart.height = am4core.percent(100);
+
+		  /* Add data */
+		  chart.data.push(data);
+		  
+		  /* Create axes */
+		  var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+		  categoryAxis.dataFields.category = "category";
+		  categoryAxis.renderer.grid.template.disabled = true;
+		  categoryAxis.renderer.labels.template.rotation = 0;
+		  categoryAxis.renderer.labels.template.wrap = true;
+		  categoryAxis.renderer.labels.template.fontFamily = "Calibri";
+		  categoryAxis.renderer.labels.template.fontSize = 18;
+		  categoryAxis.renderer.labels.template.fontWeight = "Bold";
+		  categoryAxis.renderer.labels.template.textAlign = "end";
+		  categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+		  categoryAxis.renderer.labels.template.maxWidth = 200;
+		  categoryAxis.renderer.labels.template.minWidth = 200;
+		  categoryAxis.cursorTooltipEnabled = false;
+		  
+		  var categoryAxis2 = chart.yAxes.push(new am4charts.CategoryAxis());
+		  categoryAxis2.dataFields.category = "valuecat";
+		  //categoryAxis2.renderer.opposite = true;
+		  categoryAxis2.renderer.grid.template.disabled = true;
+		  categoryAxis2.renderer.labels.template.rotation = 0;
+		  categoryAxis2.renderer.labels.template.wrap = true;
+		  categoryAxis2.renderer.labels.template.maxWidth = 75;
+		  categoryAxis2.renderer.labels.template.minWidth = 75;
+		  categoryAxis2.renderer.labels.template.fontFamily = "Calibri";
+		  categoryAxis2.renderer.labels.template.fontSize = 18;
+		  categoryAxis2.renderer.labels.template.textAlign = "middle";
+		  categoryAxis2.renderer.labels.template.fill = am4core.color("#fff");
+		  categoryAxis2.renderer.labels.template.maxWidth = 100;
+		  categoryAxis2.renderer.labels.template.minWidth = 100; 
+		  categoryAxis2.cursorTooltipEnabled = false;
+		  
+		  var categoryAxis3 = chart.yAxes.push(new am4charts.CategoryAxis());
+		  categoryAxis3.dataFields.category = "priorcat";
+		  categoryAxis3.renderer.opposite = true;
+		  categoryAxis3.renderer.grid.template.disabled = true;
+		  categoryAxis3.renderer.labels.template.rotation = 0;
+		  categoryAxis3.renderer.labels.template.wrap = true;
+		  categoryAxis3.renderer.labels.template.maxWidth = 75;
+		  categoryAxis3.renderer.labels.template.minWidth = 75;
+		  categoryAxis3.renderer.labels.template.fontFamily = "Calibri";
+		  categoryAxis3.renderer.labels.template.fontSize = 18;
+		  categoryAxis3.renderer.labels.template.textAlign = "middle";
+		  categoryAxis3.renderer.labels.template.fill = am4core.color("#fff");
+		  categoryAxis3.renderer.labels.template.maxWidth = 100;
+		  categoryAxis3.renderer.labels.template.minWidth = 100; 
+		  categoryAxis3.cursorTooltipEnabled = false;
+		  
+		  var categoryAxis4 = chart.yAxes.push(new am4charts.CategoryAxis());
+		  categoryAxis4.dataFields.category = "2ypriorcat";
+		  categoryAxis4.renderer.opposite = true;
+		  categoryAxis4.renderer.grid.template.disabled = true;
+		  categoryAxis4.renderer.labels.template.rotation = 0;
+		  categoryAxis4.renderer.labels.template.wrap = true;
+		  categoryAxis4.renderer.labels.template.maxWidth = 75;
+		  categoryAxis4.renderer.labels.template.minWidth = 75;
+		  categoryAxis4.renderer.labels.template.fontFamily = "Calibri";
+		  categoryAxis4.renderer.labels.template.fontSize = 18;
+		  categoryAxis4.renderer.labels.template.textAlign = "middle";
+		  categoryAxis4.renderer.labels.template.fill = am4core.color("#fff");
+		  categoryAxis4.renderer.labels.template.maxWidth = 100;
+		  categoryAxis4.renderer.labels.template.minWidth = 100; 
+		  categoryAxis4.cursorTooltipEnabled = false;
+
+
+		  var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+		  valueAxis.renderer.grid.template.disabled = true;
+		  valueAxis.min = min;
+		  valueAxis.max = max;
+		  valueAxis.strictMinMax = true;
+		  valueAxis.numberFormatter.numberFormat = nf; // #,### or #'%'
+		  valueAxis.renderer.baseGrid.disabled = true;
+		  valueAxis.renderer.labels.template.fontFamily = "Calibri";
+		  valueAxis.renderer.labels.template.fontSize = 12;
+		  valueAxis.renderer.minGridDistance = 190;
+		  valueAxis.renderer.labels.template.fill = am4core.color("#fff");
+		  
+
+		  /* 
+			In order to create separate background colors for each range of values, 
+			you have to create multiple axisRange objects each with their own fill color 
+		  
+		  if (colorType === "solid") {
+			var start = 0, end = 20;
+			for (var i = 0; i < 5; ++i) {
+			  createRange(valueAxis, start, end, am4core.color(colors[i]));
+			  start += 20;
+			  end += 20;
+			}
+		  }
+		  */
+		  /*
+			In order to create a gradient background, only one axisRange object is needed
+			and a gradient object can be assigned to the axisRange's fill property. 
+		  
+		  else if (colorType === "gradient") {
+			var gradient = new am4core.LinearGradient();
+			for (var i = 0; i < 5; ++i) {
+			  // add each color that makes up the gradient
+			  gradient.addColor(am4core.color(colors[i]));
+			}
+			createRange(valueAxis, 0, 200, gradient);
+		  }
+		  */
+
+		  /* Create series */
+		  var series5 = chart.series.push(new am4charts.ColumnSeries());
+		  series5.dataFields.valueX = "valuemin";
+		  series5.dataFields.categoryY = "category";
+		  series5.columns.template.fill = am4core.color("#252525");
+		  series5.columns.template.stroke = am4core.color("#000");
+		  series5.clustered = false;
+		  // series5.columns.template.dy = -22.5;
+		  series5.columns.template.fillOpacity = 1;
+		  series5.columns.template.strokeWidth = 1;
+		  series5.columns.template.strokeOpacity = 0.5;
+		  series5.columns.template.height = am4core.percent(100);
+		  
+		  var series6 = chart.series.push(new am4charts.ColumnSeries());
+		  series6.dataFields.valueX = "valuemax";
+		  series6.dataFields.categoryY = "category";
+		  series6.columns.template.fill = am4core.color("#3E3E3E");
+		  series6.columns.template.stroke = am4core.color("#000");
+		  series6.clustered = false;
+		  // series5.columns.template.dy = -22.5;
+		  series6.columns.template.fillOpacity = 1;
+		  series6.columns.template.strokeWidth = 1;
+		  series6.columns.template.strokeOpacity = 0.5;
+		  series6.columns.template.height = am4core.percent(100);
+		  
+		  var series = chart.series.push(new am4charts.ColumnSeries());
+		  series.dataFields.valueX = "value";
+		  series.dataFields.categoryY = "category";
+		  series.columns.template.fill = am4core.color("#046a38");
+		  series.columns.template.stroke = am4core.color("#000");
+		  series.clustered = false;
+		  series.columns.template.strokeWidth = 1;
+		  series.columns.template.strokeOpacity = 0.5;
+		  series.columns.template.height = am4core.percent(65);
+		  // series.tooltipText = "{value}";
+
+
+		  var series2 = chart.series.push(new am4charts.StepLineSeries());
+		  series2.dataFields.valueX = "median";
+		  series2.dataFields.categoryY = "category";
+		  series2.strokeWidth = 2;
+		  series2.noRisers = true;
+		  series2.startLocation = 0.0;
+		  series2.endLocation = 1.00;
+		  series2.tooltipText = "{valueX}";
+		  series2.showTooltipOn = "always";
+		  series2.cursorTooltipEnabled = true;
+		  series2.tooltip.getFillFromObject = false;
+		  series2.tooltip.background.fill = am4core.color("#7c7c7c");
+		  series2.stroke = am4core.color("#7c7c7c");
+		  
+		  var series3 = chart.series.push(new am4charts.StepLineSeries());
+		  series3.dataFields.valueX = "prior";
+		  series3.dataFields.categoryY = "category";
+		  series3.strokeWidth = 2;
+		  series3.noRisers = true;
+		  series3.startLocation = 0.0;
+		  series3.endLocation = 1.00;
+		  //series3.tooltipText = "{priorlb}";
+		  series3.tooltip.getFillFromObject = false;
+		  series3.tooltip.background.fill = am4core.color("#007cb0");
+		  series3.tooltip.pointerOrientation = "up";
+		  series3.stroke = am4core.color("#007cb0");
+		  
+		  var series4 = chart.series.push(new am4charts.StepLineSeries());
+		  series4.dataFields.valueX = "2yprior";
+		  series4.dataFields.categoryY = "category";
+		  series4.strokeWidth = 2;
+		  series4.noRisers = true;
+		  series4.startLocation = 0.0;
+		  series4.endLocation = 1.00;
+		  //series4.tooltipText = "{valueX}";
+		  series4.tooltip.getFillFromObject = false;
+		  series4.tooltip.background.fill = am4core.color("#86bc25");
+		  series4.tooltip.pointerOrientation = "down";
+		  series4.stroke = am4core.color("#86bc25");
+		  
+		  
+
+		  chart.cursor = new am4charts.XYCursor()
+		  chart.cursor.lineX.disabled = true;
+		  chart.cursor.lineY.disabled = true;
+
+		  valueAxis.cursorTooltipEnabled = false;
+		  chart.arrangeTooltips = false;
+		}
+
+	}); // end am4core.ready()
+	</script>
+
+	<!-- HTML -->
+	<body bgcolor = "black">
+		<div id="chartdiv"></div>
+	</body>
+<html>

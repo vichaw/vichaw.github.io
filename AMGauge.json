@@ -1,0 +1,260 @@
+{
+   "id":"com.dtt.amgauge",
+   "version":"1.0.0",
+   "name":"AM Gauge",
+   "description":"AM Gauge Chart",
+   "newInstancePrefix":"Amgauge",
+   "icon":"data:image/png;base64,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",
+   "vendor":"AMCHARTS",
+   "eula":"",
+   "license":"",
+   "webcomponents":[
+      {
+		 "kind":"main",
+		 "tag":"com-dtt-amgauge",
+		 "url":"https://fsptest.deloitteresources.com/com.sap.portal.resourcerepository/repo/com.dtt.FLP_Extension/amchart/AMGauge.js",
+		 "integrity":"",
+		 "ignoreIntegrity":true
+      },
+	  {
+		"kind": "builder",
+		"tag": "com-dtt-amgauge-bps",
+		"url": "https://fsptest.deloitteresources.com/com.sap.portal.resourcerepository/repo/com.dtt.FLP_Extension/amchart/AMGauge_Builder.js",
+		"integrity": "",
+		"ignoreIntegrity": true
+	  }
+   ],
+   "properties":{
+      "PrimValue":{
+         "type":"number",
+         "description":"Primary value to be shown",
+         "default":55
+      },
+      "SecValue":{
+         "type":"number",
+         "description":"Secondary value to be shown",
+         "default":45
+      },
+	  "BottomText":{
+         "type":"string",
+         "description":"Text below the gauge",
+         "default":""
+      },
+	  "GaugeScaleStart":{
+         "type":"integer",
+         "description":"Start of value of gauge scale",
+         "default":0
+      },
+	  "GaugeScaleEnd":{
+         "type":"integer",
+         "description":"End of value of gauge scale",
+         "default":100
+      },
+	  "Rng1Start":{
+         "type":"integer",
+         "description":"Start of value of gauge band 1",
+         "default":0
+      },
+	  "Rng1End":{
+         "type":"integer",
+         "description":"End of value of gauge band 1",
+         "default":45
+      },
+	  "Rng2Label":{
+         "type":"string",
+         "description":"Text to be shown on hover of band 1",
+         "default":""
+      },
+	  "Rng2Start":{
+         "type":"integer",
+         "description":"Start of value of gauge band 2",
+         "default":45
+      },
+	  "Rng2End":{
+         "type":"integer",
+         "description":"End of value of gauge band 2",
+         "default":75
+      },
+	  "Rng3Label":{
+         "type":"string",
+         "description":"Text to be shown on hover of band 2",
+         "default":""
+      },
+	  "Rng3Start":{
+         "type":"integer",
+         "description":"Start of value of gauge band 3",
+         "default":75
+      },
+	  "Rng3End":{
+         "type":"integer",
+         "description":"End of value of gauge band 3",
+         "default":100
+      },
+	  "Rng1Col":{
+         "type":"string",
+         "description":"Color value gauge band 1",
+         "default":"#DA291C"
+      },
+	  "Rng2Col":{
+         "type":"string",
+         "description":"Color value gauge band 2",
+         "default":"#FFCD00"
+      },
+	  "Rng3Col":{
+         "type":"string",
+         "description":"Color value gauge band 3",
+         "default":"#43B02A"
+      },
+	  "PrimCol":{
+         "type":"string",
+         "description":"Color value of the secondary marker",
+         "default":"#FFFFFF"
+      },
+	  "SecCol":{
+         "type":"string",
+         "description":"Color value of the primary marker",
+         "default":"#FFFF00"
+      },
+	  "StAngle":{
+         "type":"number",
+         "description":"Start angle of the gauge",
+         "default":-180
+      },
+	  "EndAngle":{
+         "type":"number",
+         "description":"End angle of the gauge",
+         "default":0
+      },
+	  "PrimShow":{
+         "type":"boolean",
+         "description":"Show / Hide the primary hand",
+         "default":true
+      },
+	  "SecShow":{
+         "type":"boolean",
+         "description":"Show / Hide the secondary hand",
+         "default":true
+      }
+   },
+   "methods":{
+		"setPrimaryValue": {
+			"description": "Sets the primary value (large arrow) of the gauge.",
+			"parameters": [
+				{
+					"name": "newValue",
+					"type": "number",
+					"description": "The new gauge value."
+				}
+			],
+			"body": "this.PrimValue = newValue;"
+		},
+		"setSecondaryValue": {
+			"description": "Sets the secondary value (small arrow) of the gauge.",
+			"parameters": [
+				{
+					"name": "newValue",
+					"type": "number",
+					"description": "The new gauge value."
+				}
+			],
+			"body": "this.SecValue = newValue;"
+		},
+		"setChartValues": {
+			"description": "Sets all the chart values. primval, secvalue, bottomtext, gaugescale, gaugerng1, gaugerng2, gaugerng3", 
+			"parameters": [
+				{
+					"name": "newPrimValue",
+					"type": "number",
+					"description": "The new primary value."
+				},
+				{
+					"name": "newSecValue",
+					"type": "number",
+					"description": "The new secondary value."
+				},
+				{
+					"name": "newBottomTxt",
+					"type": "string",
+					"description": "The new bottom text."
+				},
+				{
+					"name": "newGaugeStartValue",
+					"type": "integer",
+					"description": "The new start value of the gauge scale."
+				},
+				{
+					"name": "newGaugeEndValue",
+					"type": "integer",
+					"description": "The new end value of the gauge scale."
+				},
+				{
+					"name": "newRng1StartValue",
+					"type": "integer",
+					"description": "The new range 1 start value."
+				},
+				{
+					"name": "newRng1EndValue",
+					"type": "integer",
+					"description": "The new range 1 end value."
+				},
+				{
+					"name": "newRng2Label",
+					"type": "string",
+					"description": "The new range 2 Label."
+				},
+				{
+					"name": "newRng2StartValue",
+					"type": "integer",
+					"description": "The new range 2 start value."
+				},
+				{
+					"name": "newRng2EndValue",
+					"type": "integer",
+					"description": "The new range 2 end value."
+				},
+				{
+					"name": "newRng3Label",
+					"type": "string",
+					"description": "The new range 3 Label."
+				},
+				{
+					"name": "newRng3StartValue",
+					"type": "integer",
+					"description": "The new range 3 start value."
+				},
+				{
+					"name": "newRng3EndValue",
+					"type": "integer",
+					"description": "The new range 3 end value."
+				}
+			],
+			"body": "this.PrimValue = newPrimValue; this.SecValue = newSecValue; this.BottomText = newBottomTxt; this.GaugeScaleStart = newGaugeStartValue; this.GaugeScaleEnd = newGaugeEndValue; this.Rng1Start = newRng1StartValue; this.Rng1End = newRng1EndValue; this.Rng2Label = newRng2Label; this.Rng2Start = newRng2StartValue; this.Rng2End = newRng2EndValue; this.Rng3Label = newRng3Label; this.Rng3Start = newRng3StartValue; this.Rng3End = newRng3EndValue;"
+		},
+		"setChartAngles": {
+			"description": "Sets the angles for the chart",
+			"parameters": [
+				{
+					"name": "newStAngle",
+					"type": "number",
+					"description": "The new start angle."
+				},
+				{
+					"name": "newEndAngle",
+					"type": "number",
+					"description": "The new end angle."
+				}
+			],
+			"body": "this.StAngle = newStAngle; this.EndAngle = newEndAngle;"
+		},
+		"getPrimaryValue": {
+			"returnType": "number",
+			"description": "Returns the gauge value",
+			"body": "return this.PrimValue;"
+		}
+   },
+   "events":{
+      "onClick":{
+         "description":"Called when the user clicks the amchart."
+      }
+   }
+}

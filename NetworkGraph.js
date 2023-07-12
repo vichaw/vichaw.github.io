@@ -196,7 +196,7 @@ addStyle(styles);
 			//console.log(chdata);
 
 			var nodes={};
-			/* Highcharts.addEvent(
+			Highcharts.addEvent(
 				Highcharts.Series,
 				"afterSetOptions",
 				function (e) {
@@ -210,7 +210,7 @@ addStyle(styles);
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
-						chdata.forEach(function (link,index) {
+						Object.values(chdata).forEach(function (link,index) {
 						
 							
 							if(link[6] === "LOOK_UP"){
@@ -282,7 +282,7 @@ addStyle(styles);
 							return nodes[id];
 						});
 					}
-				}); */
+				}); 
 		
 			var network = Highcharts.chart(cdiv, {
 							chart: {

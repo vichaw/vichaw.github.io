@@ -196,7 +196,7 @@ addStyle(styles);
 			//console.log(chdata);
 
 			var nodes={};
-			Highcharts.addEvent(
+			/* Highcharts.addEvent(
 				Highcharts.Series,
 				"afterSetOptions",
 				function (e) {
@@ -282,7 +282,7 @@ addStyle(styles);
 							return nodes[id];
 						});
 					}
-				});
+				}); */
 		
 			var network = Highcharts.chart(cdiv, {
 							chart: {

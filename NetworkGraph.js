@@ -194,7 +194,7 @@ addStyle(styles);
 			
 			var chdata = JSON.parse(txtData);
 			
-			var network = new Highcharts.chart("container", {
+			var network = Highcharts.chart("container", {
 							chart: {
 								type: "networkgraph",
 								height: "100%"

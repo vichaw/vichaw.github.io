@@ -210,7 +210,7 @@ addStyle(styles);
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
-						Object.values(chdata).forEach(function (link,index) {
+						Object.keys(chdata).forEach(function (link,index) {
 						
 							
 							if(link[6] === "LOOK_UP"){

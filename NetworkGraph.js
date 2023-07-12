@@ -194,6 +194,94 @@ addStyle(styles);
 
 			var chdata = JSON.parse(txtData);
 			console.log(chdata);
+			
+			Highcharts.addEvent(
+				Highcharts.Series,
+				"afterSetOptions",
+				function (e) {
+					// console.log(colors);
+					// i = 0,
+					nodes = {};
+					var allNodes = [];
+					var selfLoop = [];
+	
+					if (
+						this instanceof Highcharts.Series.types.networkgraph &&
+						e.options.id === "lang-tree"
+					) {
+						e.options.data.forEach(function (link,index) {
+						
+							
+							if(link[6] === "LOOK_UP"){
+								link[7] = "dash";
+							}
+							
+							var from = {'0': link[0] , '1':link[2]};
+							var to = {'0': link[4] , '1':link[3]};
+							allNodes.push(to);
+							allNodes.push(from);
+							if(link[0] === link[4]){
+								selfLoop.push({'0': link[4] , '1':link[4]+" \u21BB"});
+							}
+							
+						});
+						// console.log(allNodes);
+						// console.log(selfLoop);
+	
+						var uniqNodes = getUniqueListBy(allNodes, '0')
+						console.log(uniqNodes);
+	
+						uniqNodes.forEach(function (node,index){
+						
+							if (index === 0) {
+								nodes[index] = {
+									id: node[0],
+									marker: {
+										radius: 30,
+										symbol: getIcon(node[1]),
+										
+									},
+									dataLabels: {
+										enabled: true,
+										useHTML: true,
+										style: {
+											fontSize: "14px",
+										},
+										allowOverlap: true,
+										color: "#0f0fff",
+										shadow: true
+									},
+									name: getIndexOfK(selfLoop, node[0])
+								};
+							} else {
+								nodes[index] = {
+									id: node[0],
+									marker: {
+										radius: 20,
+										lineColor:"#008000",
+										lineWidth: 0,
+										symbol: getIcon(node[1]),
+										
+									},
+									dataLabels: {
+										enabled: true,
+										useHTML: true,
+										style: {
+											fontSize: "12px"
+										},
+										allowOverlap: true
+									},
+									//color: "#000000",
+									name: getIndexOfK(selfLoop, node[0]),
+								}
+							}					
+						});
+						//console.log(nodes);
+						e.options.nodes = Object.keys(nodes).map(function (id) {
+							return nodes[id];
+						});
+					}
+				});
 		
 			var network = Highcharts.chart(cdiv, {
 							chart: {
@@ -277,93 +365,7 @@ addStyle(styles);
 								data: chdata
 							}]
 						});
-			Highcharts.addEvent(
-			Highcharts.Series,
-			"afterSetOptions",
-			function (e) {
-				// console.log(colors);
-				// i = 0,
-				nodes = {};
-				var allNodes = [];
-				var selfLoop = [];
-
-				if (
-					this instanceof Highcharts.Series.types.networkgraph &&
-					e.options.id === "lang-tree"
-				) {
-					e.options.data.forEach(function (link,index) {
-					
-						
-						if(link[6] === "LOOK_UP"){
-							link[7] = "dash";
-						}
-						
-						var from = {'0': link[0] , '1':link[2]};
-						var to = {'0': link[4] , '1':link[3]};
-						allNodes.push(to);
-						allNodes.push(from);
-						if(link[0] === link[4]){
-							selfLoop.push({'0': link[4] , '1':link[4]+" \u21BB"});
-						}
-						
-					});
-					// console.log(allNodes);
-					// console.log(selfLoop);
-
-					var uniqNodes = getUniqueListBy(allNodes, '0')
-					console.log(uniqNodes);
-
-					uniqNodes.forEach(function (node,index){
-					
-						if (index === 0) {
-							nodes[index] = {
-								id: node[0],
-								marker: {
-									radius: 30,
-									symbol: getIcon(node[1]),
-									
-								},
-								dataLabels: {
-									enabled: true,
-									useHTML: true,
-									style: {
-										fontSize: "14px",
-									},
-									allowOverlap: true,
-									color: "#0f0fff",
-									shadow: true
-								},
-								name: getIndexOfK(selfLoop, node[0])
-							};
-						} else {
-							nodes[index] = {
-								id: node[0],
-								marker: {
-									radius: 20,
-									lineColor:"#008000",
-									lineWidth: 0,
-									symbol: getIcon(node[1]),
-									
-								},
-								dataLabels: {
-									enabled: true,
-									useHTML: true,
-									style: {
-										fontSize: "12px"
-									},
-									allowOverlap: true
-								},
-								//color: "#000000",
-								name: getIndexOfK(selfLoop, node[0]),
-							}
-						}					
-					});
-					//console.log(nodes);
-					e.options.nodes = Object.keys(nodes).map(function (id) {
-						return nodes[id];
-					});
-				}
-			});
+			
 			(function(H) {
 			  H.wrap(H.seriesTypes.networkgraph.prototype.pointClass.prototype, 'getLinkPath', function(p) {
 				var left = this.toNode,

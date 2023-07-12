@@ -191,10 +191,11 @@ addStyle(styles);
 			}
 			
 			var cdiv = this.shadowRoot.getElementById('container_network');
-			console.log(cdiv);
+			console.log(txtData);
 			
 			var chdata = JSON.parse(txtData);
-			
+			console.log(chdata);
+		
 			var network = Highcharts.chart(cdiv, {
 							chart: {
 								type: "networkgraph",

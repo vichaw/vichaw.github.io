@@ -192,7 +192,7 @@ addStyle(styles);
 			
 			var cdiv = this.shadowRoot.getElementById('container_network');
 			console.log(txtData);
-			
+			console.log(typeof txtData);
 			var chdata = JSON.parse(txtData);
 			console.log(chdata);
 		

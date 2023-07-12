@@ -205,14 +205,15 @@ addStyle(styles);
 					nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
+					var jsdata = JSON.parse(txtData);
 	
 					if (
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
-						console.log(chdata);
-						console.log(typeof chdata);
-						Object.values(chdata).forEach(function (link) {
+						console.log(jsdata);
+						console.log(typeof jsdata);
+						Object.values(jsdata).forEach(function (link) {
 							
 							console.log(link);
 							

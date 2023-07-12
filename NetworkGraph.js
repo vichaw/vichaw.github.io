@@ -119,12 +119,12 @@ addStyle(styles);
 	
 	let template = document.createElement("template");
     template.innerHTML = `
-		<body bgcolor = "black">
-			<figure class="highcharts-figure" >
-				<div id="container"></div>
-			</figure>
-		</body>
-		`;
+			<body bgcolor = "black">
+				<figure class="highcharts-figure" >
+					<div id="container_network"></div>
+				</figure>
+			</body>
+			`;
 	
     class NetworkGraph extends HTMLElement {
         constructor() {
@@ -190,11 +190,12 @@ addStyle(styles);
 				this._firstUpdate = false;
 			}
 			
-			var cdiv = this.shadowRoot.getElementById('container');
+			var cdiv = this.shadowRoot.getElementById('container_network');
+			console.log(cdiv);
 			
 			var chdata = JSON.parse(txtData);
 			
-			var network = Highcharts.chart("container", {
+			var network = Highcharts.chart(cdiv, {
 							chart: {
 								type: "networkgraph",
 								height: "100%"

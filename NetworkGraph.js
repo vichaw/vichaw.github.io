@@ -191,11 +191,8 @@ addStyle(styles);
 			}
 			
 			var cdiv = this.shadowRoot.getElementById('container_network');
-			console.log(txtData);
-			console.log(typeof txtData);
-			var strData = txtData.toString();
-			console.log(strData);
-			var chdata = JSON.parse(strData);
+
+			var chdata = JSON.parse(txtData);
 			console.log(chdata);
 		
 			var network = Highcharts.chart(cdiv, {
@@ -284,8 +281,8 @@ addStyle(styles);
 			Highcharts.Series,
 			"afterSetOptions",
 			function (e) {
-				//console.log(colors);
-				i = 0,
+				// console.log(colors);
+				// i = 0,
 				nodes = {};
 				var allNodes = [];
 				var selfLoop = [];

@@ -193,7 +193,7 @@ addStyle(styles);
 			var cdiv = this.shadowRoot.getElementById('container_network');
 
 			var chdata = JSON.parse(txtData);
-			console.log(chdata);
+			//console.log(chdata);
 
 			var nodes={};
 			Highcharts.addEvent(
@@ -206,7 +206,7 @@ addStyle(styles);
 					var allNodes = [];
 					var selfLoop = [];
 
-					console.log(e.options.data);
+					e.options.data = chdata;
 	
 					if (
 						this instanceof Highcharts.Series.types.networkgraph &&

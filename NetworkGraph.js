@@ -4,72 +4,6 @@ var getScriptPromisify = (src) => {
 	  })
 	}
 	
-(function(H) {
-  H.wrap(H.seriesTypes.networkgraph.prototype.pointClass.prototype, 'getLinkPath', function(p) {
-	var left = this.toNode,
-	  right = this.fromNode;
-
-	var angle = Math.atan((left.plotX - right.plotX) /
-	  (left.plotY - right.plotY));
-	//console.log(angle);
-
-	if (angle) {
-	  let path = ['M', left.plotX, left.plotY, right.plotX, right.plotY],
-		lastPoint = left,
-		nextLastPoint = right,
-		pointRadius = 50,
-		arrowLength = 5,
-		arrowWidth = 5;
-
-	  if (left.plotY < right.plotY) {
-		path.push(
-		  nextLastPoint.plotX - pointRadius * Math.sin(angle),
-		  nextLastPoint.plotY - pointRadius * Math.cos(angle),
-		);
-		path.push(
-		  nextLastPoint.plotX - pointRadius * Math.sin(angle) - arrowLength * Math.sin(angle) - arrowWidth * Math.cos(angle),
-		  nextLastPoint.plotY - pointRadius * Math.cos(angle) - arrowLength * Math.cos(angle) + arrowWidth * Math.sin(angle),
-		);
-
-		path.push(
-		  nextLastPoint.plotX - pointRadius * Math.sin(angle),
-		  nextLastPoint.plotY - pointRadius * Math.cos(angle),
-		);
-		path.push(
-		  nextLastPoint.plotX - pointRadius * Math.sin(angle) - arrowLength * Math.sin(angle) + arrowWidth * Math.cos(angle),
-		  nextLastPoint.plotY - pointRadius * Math.cos(angle) - arrowLength * Math.cos(angle) - arrowWidth * Math.sin(angle),
-		);
-
-
-	  } else {
-		path.push(
-		  nextLastPoint.plotX + pointRadius * Math.sin(angle),
-		  nextLastPoint.plotY + pointRadius * Math.cos(angle),
-		);
-		path.push(
-		  nextLastPoint.plotX + pointRadius * Math.sin(angle) + arrowLength * Math.sin(angle) - arrowWidth * Math.cos(angle),
-		  nextLastPoint.plotY + pointRadius * Math.cos(angle) + arrowLength * Math.cos(angle) + arrowWidth * Math.sin(angle),
-		);
-		path.push(
-		  nextLastPoint.plotX + pointRadius * Math.sin(angle),
-		  nextLastPoint.plotY + pointRadius * Math.cos(angle),
-		);
-		path.push(
-		  nextLastPoint.plotX + pointRadius * Math.sin(angle) + arrowLength * Math.sin(angle) + arrowWidth * Math.cos(angle),
-		  nextLastPoint.plotY + pointRadius * Math.cos(angle) + arrowLength * Math.cos(angle) - arrowWidth * Math.sin(angle),
-		);
-
-	  }
-		//console.log(path);
-	  return path
-	}
-	return [
-	  ['M', left.plotX || 0, left.plotY || 0],
-	  ['L', right.plotX || 0, right.plotY || 0],
-	];
-  });
-}(Highcharts));
-
 function getIcon(type) {
 	switch (type) {
 		case 'RSDS':
@@ -253,7 +187,6 @@ addStyle(styles);
 			if (this._firstUpdate) {
 				await getScriptPromisify("https://code.highcharts.com/highcharts.js");
 				await getScriptPromisify("https://code.highcharts.com/modules/networkgraph.js");
-				await getScriptPromisify("https://code.highcharts.com/modules/accessibility.js");
 				this._firstUpdate = false;
 			}
 			
@@ -261,6 +194,88 @@ addStyle(styles);
 			
 			var chdata = JSON.parse(txtData);
 			
+			var network = new Highcharts.chart("container", {
+							chart: {
+								type: "networkgraph",
+								height: "100%"
+							},
+							title: {
+								text: chtitle,
+								align: "left"
+							},
+							subtitle: {
+								text: "",
+								align: "left"
+							},
+							plotOptions: {
+								networkgraph: {
+									keys: ["to", "level", "ch_type", "p_type", "from", "extra", "rel_type","dashStyle"],
+									turboThreshold: 0.95,
+									layoutAlgorithm: {
+										enableSimulation: false,
+										friction: -0.35,
+										linkLength: 85,
+										//initialPositions: 'random',
+										// integration: 'euler', 
+										//integration: 'verlet',
+										// Half of the repulsive force
+										gravitationalConstant: 0.10 
+									}
+								}
+							},
+							series: [{
+								accessibility: {
+									enabled: false
+								},
+								draggable: true,
+								dataLabels: {
+									enabled: true,
+									linkTextPath: {
+										attributes: {
+											dy: -3
+										}
+									},
+									style: {
+										fontSize: "12px"
+									},
+									// linkFormat: "{point.fromNode.name} \u2192 {point.toNode.name}"+"{point.txt}" + "{point.fromNode.name} \u2190 {point.toNode.name}",
+									// linkFormat: "{point.toNode.name} ",
+									textPath: {
+										enabled: true
+									}, 
+									linkFormat: "",
+									//format: "Node",
+									allowOverlap: true
+								},
+								link:{
+									//color: "#0000f0",
+									width: 1.3,
+									dashStyle: "{point.dashStyle}",
+								},
+								id: "lang-tree",
+								allowPointSelect: true,
+								tooltip: {
+									distance:1000,
+									useHTML: true,
+									headerFormat: "",
+									display: "none",
+									enabled: false,
+									hideDelay: 0,
+								},
+								point: {
+									events: {
+										select: function () {
+											var sel = this.id;
+											console.log(this);
+										}
+									}
+								},
+								marker: {
+									radius: 20
+								}, 
+								data: chdata
+							}]
+						});
 			Highcharts.addEvent(
 			Highcharts.Series,
 			"afterSetOptions",
@@ -348,89 +363,71 @@ addStyle(styles);
 					});
 				}
 			});
+			(function(H) {
+			  H.wrap(H.seriesTypes.networkgraph.prototype.pointClass.prototype, 'getLinkPath', function(p) {
+				var left = this.toNode,
+				  right = this.fromNode;
 
-			var network = Highcharts.chart("container", {
-							chart: {
-								type: "networkgraph",
-								height: "100%"
-							},
-							title: {
-								text: chtitle,
-								align: "left"
-							},
-							subtitle: {
-								text: "",
-								align: "left"
-							},
-							plotOptions: {
-								networkgraph: {
-									keys: ["to", "level", "ch_type", "p_type", "from", "extra", "rel_type","dashStyle"],
-									turboThreshold: 0.95,
-									layoutAlgorithm: {
-										enableSimulation: false,
-										friction: -0.35,
-										linkLength: 85,
-										//initialPositions: 'random',
-										// integration: 'euler', 
-										//integration: 'verlet',
-										// Half of the repulsive force
-										gravitationalConstant: 0.10 
-									}
-								}
-							},
-							series: [{
-								accessibility: {
-									enabled: false
-								},
-								draggable: true,
-								dataLabels: {
-									enabled: true,
-									linkTextPath: {
-										attributes: {
-											dy: -3
-										}
-									},
-									style: {
-										fontSize: "12px"
-									},
-									// linkFormat: "{point.fromNode.name} \u2192 {point.toNode.name}"+"{point.txt}" + "{point.fromNode.name} \u2190 {point.toNode.name}",
-									// linkFormat: "{point.toNode.name} ",
-									textPath: {
-										enabled: true
-									}, 
-									linkFormat: "",
-									//format: "Node",
-									allowOverlap: true
-								},
-								link:{
-									//color: "#0000f0",
-									width: 1.3,
-									dashStyle: "{point.dashStyle}",
-								},
-								id: "lang-tree",
-								allowPointSelect: true,
-								tooltip: {
-									distance:1000,
-									useHTML: true,
-									headerFormat: "",
-									display: "none",
-									enabled: false,
-									hideDelay: 0,
-								},
-								point: {
-									events: {
-										select: function () {
-											var sel = this.id;
-											console.log(this);
-										}
-									}
-								},
-								marker: {
-									radius: 20
-								}, 
-								data: chdata
-							}]
-						});
+				var angle = Math.atan((left.plotX - right.plotX) /
+				  (left.plotY - right.plotY));
+				//console.log(angle);
+
+				if (angle) {
+				  let path = ['M', left.plotX, left.plotY, right.plotX, right.plotY],
+					lastPoint = left,
+					nextLastPoint = right,
+					pointRadius = 50,
+					arrowLength = 5,
+					arrowWidth = 5;
+
+				  if (left.plotY < right.plotY) {
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle) - arrowLength * Math.sin(angle) - arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle) - arrowLength * Math.cos(angle) + arrowWidth * Math.sin(angle),
+					);
+
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle) - arrowLength * Math.sin(angle) + arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle) - arrowLength * Math.cos(angle) - arrowWidth * Math.sin(angle),
+					);
+
+
+				  } else {
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle) + arrowLength * Math.sin(angle) - arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle) + arrowLength * Math.cos(angle) + arrowWidth * Math.sin(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle) + arrowLength * Math.sin(angle) + arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle) + arrowLength * Math.cos(angle) - arrowWidth * Math.sin(angle),
+					);
+
+				  }
+					//console.log(path);
+				  return path
+				}
+				return [
+				  ['M', left.plotX || 0, left.plotY || 0],
+				  ['L', right.plotX || 0, right.plotY || 0],
+				];
+			  });
+			}(Highcharts));
         }
     }
     customElements.define("com-asml-network", NetworkGraph);

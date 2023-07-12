@@ -205,6 +205,8 @@ addStyle(styles);
 					nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
+
+					console.log(e.options.data);
 	
 					if (
 						this instanceof Highcharts.Series.types.networkgraph &&

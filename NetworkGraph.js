@@ -194,7 +194,8 @@ addStyle(styles);
 
 			var chdata = JSON.parse(txtData);
 			console.log(chdata);
-			
+
+			var nodes={};
 			Highcharts.addEvent(
 				Highcharts.Series,
 				"afterSetOptions",

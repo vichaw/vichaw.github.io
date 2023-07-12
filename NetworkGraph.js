@@ -210,6 +210,8 @@ addStyle(styles);
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
+						console.log(chdata);
+						console.log(typeof chdata);
 						Object.values(chdata).forEach(function (link) {
 							
 							console.log(link);

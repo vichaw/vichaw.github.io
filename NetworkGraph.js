@@ -210,8 +210,9 @@ addStyle(styles);
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
-						Object.keys(chdata).forEach(function (link,index) {
-						
+						Object.values(chdata).forEach(function (link) {
+							
+							console.log(link);
 							
 							if(link[6] === "LOOK_UP"){
 								link[7] = "dash";

@@ -205,14 +205,12 @@ addStyle(styles);
 					nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
-
-					e.options.data = chdata;
 	
 					if (
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
-						e.options.data.forEach(function (link,index) {
+						chdata.forEach(function (link,index) {
 						
 							
 							if(link[6] === "LOOK_UP"){

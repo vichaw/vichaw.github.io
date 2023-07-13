@@ -193,7 +193,7 @@ addStyle(styles);
 			var cdiv = this.shadowRoot.getElementById('container_network');
 
 			var chdata = JSON.parse(txtData);
-			//console.log(chdata);
+			console.log(typeof chdata);
 
 			var nodes={};
 			Highcharts.addEvent(

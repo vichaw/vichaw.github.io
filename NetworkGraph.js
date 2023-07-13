@@ -175,8 +175,15 @@ addStyle(styles);
 			
 			var cdiv = this.shadowRoot.getElementById('container_network');
 
-			var chdata = JSON.parse(txtData);
-			console.log(typeof chdata);
+			var jsonify = JSON.parse(txtData);
+			  console.log("json: "+typeof jsonify);
+			  var chdata = {};
+			  if (typeof jsonify === 'object'){
+				chdata = jsonify;
+			  } else {
+				chdata = JSON.parse(jsonify);
+			  }
+			console.log("chdata: "+typeof chdata);
 
 			var nodes={};
 			Highcharts.addEvent(
@@ -186,7 +193,6 @@ addStyle(styles);
 					nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
-					var jsdata = JSON.parse(txtData);
 	
 					if (
 						this instanceof Highcharts.Series.types.networkgraph &&

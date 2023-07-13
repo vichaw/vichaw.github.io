@@ -70,47 +70,30 @@ function addStyle(styles) {
             document.getElementsByTagName("head")[0].appendChild(css);
         }
 
-var styles = '	.highcharts-data-table table { \
-					font-family: Verdana, sans-serif; \
-					border-collapse: collapse; \
-					border: 1px solid #ebebeb; \
-					margin: 10px auto; \
-					text-align: center; \
-				} \
-				\
-				\
-				.highcharts-data-table caption { \
-					padding: 1em 0; \
-					font-size: 1.2em; \
-					color: #555; \
-				} \
-				\
-				.highcharts-label span{ \
-					padding: 1em 0; \
-					font-size: 1.2em; \
-					color: #555; \
-					text-shadow: 0 0 3px rgba(255,255,255,1) ; \
-					font-family: Lucida Sans Unicode ; \
-				}\
-				\
-				.highcharts-data-table th { \
-					font-weight: 600; \
-					padding: 0.5em; \
-				} \
-				\
-				.highcharts-data-table td, \
-				.highcharts-data-table th, \
-				.highcharts-data-table caption { \
-					padding: 0.5em; \
-				} \
-				\
-				.highcharts-data-table thead tr, \
-				.highcharts-data-table tr:nth-child(even) { \
-					background: #f8f8f8; \
-				} \
-				\
-				.highcharts-data-table tr:hover { \
-					background: #f1f7ff; \
+var styles = '		.highcharts-container { \
+					height: 100% !important; \
+					padding: 0px;  \
+				}  \
+				 \
+				.highcharts-credits {  \
+				  display: none;  \
+				}  \
+				 \
+				.highcharts-label span{  \
+					padding: 1em 0;  \
+					font-size: 1.2em;  \
+					color: #555;  \
+					text-shadow: 0 0 3px rgba(255,255,255,1) ;  \
+					font-family: Lucida Sans Unicode ;  \
+				}  \
+				 \
+				.highcharts-data-table thead tr,  \
+				.highcharts-data-table tr:nth-child(even) {  \
+					background: #f8f8f8;  \
+				}  \
+				 \
+				.highcharts-data-table tr:hover {  \
+					background: #f1f7ff;  \
 				}';
  
 addStyle(styles);
@@ -200,8 +183,6 @@ addStyle(styles);
 				Highcharts.Series,
 				"afterSetOptions",
 				function (e) {
-					// console.log(colors);
-					// i = 0,
 					nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
@@ -229,8 +210,6 @@ addStyle(styles);
 							}
 							
 						});
-						// console.log(allNodes);
-						// console.log(selfLoop);
 	
 						var uniqNodes = getUniqueListBy(allNodes, '0')
 						console.log(uniqNodes);

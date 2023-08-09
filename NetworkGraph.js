@@ -75,7 +75,6 @@ function addStyle(styles) {
              
             /* Append style to the tag name */
             document.getElementsByTagName("head")[0].appendChild(css);
-		document.getElementById("container_network")[0].appendChild(css);
         }
 
 var styles = '		.highcharts-container { \

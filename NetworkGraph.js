@@ -66,6 +66,7 @@ function addStyle(styles) {
             /* Create style document */
             var css = document.createElement('style');
             css.type = 'text/css';
+	    css.id = 'customstyle';
          
             if (css.styleSheet)
                 css.styleSheet.cssText = styles;

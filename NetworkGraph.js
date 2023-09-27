@@ -74,7 +74,8 @@ function addStyle(styles) {
                 css.appendChild(document.createTextNode(styles));
              
             /* Append style to the tag name */
-            document.getElementsByTagName("head")[0].appendChild(css);
+            //document.getElementsByTagName("head")[0].appendChild(css);
+			host.shadowRoot.appendChild(css);
         }
 
 var styles = '		.highcharts-container { \

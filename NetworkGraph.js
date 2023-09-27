@@ -76,7 +76,7 @@ function addStyle(styles) {
             /* Append style to the tag name */
             //document.getElementsByTagName("head")[0].appendChild(css);
 		//host.shadowRoot.appendChild(css);
-		document.getElementsByClassName("highcharts-figure").appendChild(css);
+		document.getElementsByClassName("highcharts-figure")[0].appendChild(css);
         }
 
 var styles = '		.highcharts-container { \

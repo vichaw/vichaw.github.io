@@ -76,7 +76,6 @@ function addStyle(styles) {
             /* Append style to the tag name */
             //document.getElementsByTagName("head")[0].appendChild(css);
 		//host.shadowRoot.appendChild(css);
-		document.getElementsByClassName("highcharts-figure")[0].appendChild(css);
         }
 
 var styles = '		.highcharts-container { \
@@ -127,6 +126,7 @@ addStyle(styles);
             });
 						
             shadowRoot.appendChild(template.content.cloneNode(true));
+	    shadowRoot.appendChild(css);
             this.addEventListener("click", event => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);

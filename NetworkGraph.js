@@ -61,7 +61,7 @@ function getUniqueListBy(arr, key) {
 	return [...new Map(arr.map(item => [item[key], item])).values()]
 }
 	
-function addStyle(styles) {
+function addStyle(styles, root) {
              
             /* Create style document */
             var css = document.createElement('style');
@@ -76,9 +76,25 @@ function addStyle(styles) {
             /* Append style to the tag name */
             //document.getElementsByTagName("head")[0].appendChild(css);
 		//host.shadowRoot.appendChild(css);
+		root.appendChild(css);
         }
 
-var styles = '		.highcharts-container { \
+
+ 
+
+
+(function() {
+	
+	let template = document.createElement("template");
+    template.innerHTML = `
+			<body bgcolor = "black">
+				<figure class="highcharts-figure" >
+					<div id="container_network"></div>
+				</figure>
+			</body>
+			`;
+
+    var styles = '		.highcharts-container { \
 					height: 100% !important; \
 					padding: 0px;  \
 				}  \
@@ -103,19 +119,6 @@ var styles = '		.highcharts-container { \
 				.highcharts-data-table tr:hover {  \
 					background: #f1f7ff;  \
 				}';
- 
-addStyle(styles);
-
-(function() {
-	
-	let template = document.createElement("template");
-    template.innerHTML = `
-			<body bgcolor = "black">
-				<figure class="highcharts-figure" >
-					<div id="container_network"></div>
-				</figure>
-			</body>
-			`;
 	
     class NetworkGraph extends HTMLElement {
         constructor() {
@@ -126,7 +129,7 @@ addStyle(styles);
             });
 						
             shadowRoot.appendChild(template.content.cloneNode(true));
-	    shadowRoot.appendChild(css);
+	    addStyle(styles, shadowRoot);
             this.addEventListener("click", event => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);

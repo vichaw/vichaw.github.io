@@ -89,7 +89,7 @@ function addStyle(styles, root) {
     template.innerHTML = `
 			<body bgcolor = "black">
 				<figure class="highcharts-figure" >
-					<div id="container_network"></div>
+					<div id="container_network" width="100%" height="100%"></div>
 				</figure>
 			</body>
 			`;

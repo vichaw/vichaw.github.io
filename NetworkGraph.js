@@ -58,7 +58,7 @@ function getUniqueListBy(arr, key) {
 	return [...new Map(arr.map(item => [item[key], item])).values()]
 }
 	
-function addStyle(styles) {
+function addStyle(styles, root) {
              
             /* Create style document */
             var css = document.createElement('style');
@@ -70,7 +70,7 @@ function addStyle(styles) {
                 css.appendChild(document.createTextNode(styles));
              
             /* Append style to the tag name */
-            shadowRoot.appendChild(css);
+            root.appendChild(css);
         }
 
 var styles = '		.highcharts-container { \
@@ -113,7 +113,7 @@ var styles = '		.highcharts-container { \
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
-		addStyle(styles);
+		addStyle(styles, shadowRoot);
             this._firstUpdate = true;
             this._props = {};
             // this._firstConnection = false;

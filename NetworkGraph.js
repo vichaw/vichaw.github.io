@@ -168,7 +168,7 @@ addStyle(styles);
 			}
 			
 			var cdiv = this.shadowRoot.getElementById('container');
-			
+			console.log(txtData);
 			var jsonify = JSON.parse(txtData);
 			  console.log("json: "+typeof jsonify);
 			  var chdata = {};

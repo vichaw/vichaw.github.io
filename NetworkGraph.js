@@ -269,7 +269,7 @@ var styles = '		.highcharts-container { \
 				"afterSetOptions",
 				function (e) {
 					//console.log(colors);
-					nodes = {};
+					var nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
 

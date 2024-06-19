@@ -60,21 +60,22 @@ function getUniqueListBy(arr, key) {
 	
 function addStyle(styles, root) {
              
-            /* Create style document */
-            var css = document.createElement('style');
-            css.type = 'text/css';
-         
-            if (css.styleSheet)
-                css.styleSheet.cssText = styles;
-            else
-                css.appendChild(document.createTextNode(styles));
-             
-            /* Append style to the tag name */
-            root.appendChild(css);
-        }
+	/* Create style document */
+	var css = document.createElement('style');
+	css.type = 'text/css';
+ 
+	if (css.styleSheet)
+		css.styleSheet.cssText = styles;
+	else
+		css.appendChild(document.createTextNode(styles));
+	 
+	/* Append style to the root */
+	root.appendChild(css);
+}
 
 var styles = '		.highcharts-container { \
 		height: 100% !important; \
+		width: 100% !important; \
 		padding: 0px; \
 	} \
 	\
@@ -113,7 +114,8 @@ var styles = '		.highcharts-container { \
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
-		addStyle(styles, shadowRoot);
+			
+			addStyle(styles, shadowRoot);
             this._firstUpdate = true;
             this._props = {};
             // this._firstConnection = false;
@@ -168,14 +170,14 @@ var styles = '		.highcharts-container { \
 			var cdiv = this.shadowRoot.getElementById('container');
 			console.log(txtData);
 			var jsonify = JSON.parse(txtData);
-			  console.log("json: "+typeof jsonify);
-			  var chdata = {};
-			  if (typeof jsonify === 'object'){
+			//console.log("json: "+typeof jsonify);
+			var chdata = {};
+			if (typeof jsonify === 'object'){
 				chdata = jsonify;
-			  } else {
+			} else {
 				chdata = JSON.parse(jsonify);
-			  }
-			console.log("chdata: "+typeof chdata);
+			}
+			//console.log("chdata: "+typeof chdata);
 			
 			var network = Highcharts.chart(cdiv, {
 							chart: {
@@ -249,9 +251,9 @@ var styles = '		.highcharts-container { \
 									hideDelay: 0,
 								},
 								point: {
-					                events: {
-					                    select: function () {
-					                        var sel = this.id;
+									events: {
+										select: function () {
+											var sel = this.id;
 											console.log(this);
 										}
 									}
@@ -259,10 +261,161 @@ var styles = '		.highcharts-container { \
 								marker: {
 									radius: 20
 								}, 
-								data: chdata
+								data: dat
 							}]
 						});
-			
+			Highcharts.addEvent(
+				Highcharts.Series,
+				"afterSetOptions",
+				function (e) {
+					//console.log(colors);
+					i = 0,
+					nodes = {};
+					var allNodes = [];
+					var selfLoop = [];
+
+					if (
+						this instanceof Highcharts.Series.types.networkgraph &&
+						e.options.id === "lang-tree"
+					) {
+						e.options.data.forEach(function (link,index) {
+						
+							
+							if(link[6] === "LOOK_UP"){
+								link[7] = "dash";
+							}
+							
+							var from = {'0': link[0] , '1':link[3]};
+							var to = {'0': link[1] , '1':link[4]};
+							allNodes.push(to);
+							allNodes.push(from);
+							if(link[0] === link[1]){
+								selfLoop.push({'0': link[1] , '1':link[1]+" \u21BB"});
+							}
+							
+						});
+						// console.log(allNodes);
+						// console.log(selfLoop);
+
+						var uniqNodes = getUniqueListBy(allNodes, '0')
+						console.log(uniqNodes);
+
+						uniqNodes.forEach(function (node,index){
+						
+							if (node[index] === chtitle) {
+							nodes[index] = {
+								id: node[0],
+								marker: {
+									radius: 25,
+									symbol: getIcon(node[1]),
+									
+								},
+								dataLabels: {
+									enabled: true,
+									useHTML: true,
+									style: {
+										fontSize: "14px",
+									},
+									allowOverlap: true,
+									shadow: true
+								},
+								color: "#10069f",
+								name: getIndexOfK(selfLoop, node[0])
+							};
+							} else {
+								nodes[index] = {
+									id: node[0],
+									marker: {
+										radius: 20,
+										lineColor:"#008000",
+										lineWidth: 0,
+										symbol: getIcon(node[1]),
+										
+									},
+									dataLabels: {
+										enabled: true,
+										useHTML: true,
+										style: {
+											fontSize: "12px"
+										},
+										allowOverlap: true
+									},
+									color: "#00A3E0",
+									name: getIndexOfK(selfLoop, node[0]),
+								}
+							}					
+						});
+						//console.log(nodes);
+						e.options.nodes = Object.keys(nodes).map(function (id) {
+							return nodes[id];
+						});
+					}
+			});
+			(function(H) {
+			  H.wrap(H.seriesTypes.networkgraph.prototype.pointClass.prototype, 'getLinkPath', function(p) {
+				var left = this.toNode,
+				  right = this.fromNode;
+
+				var angle = Math.atan((left.plotX - right.plotX) /
+				  (left.plotY - right.plotY));
+				//console.log(angle);
+
+				if (angle) {
+				  let path = ['M', left.plotX, left.plotY, right.plotX, right.plotY],
+					lastPoint = left,
+					nextLastPoint = right,
+					pointRadius = 50,
+					arrowLength = 5,
+					arrowWidth = 5;
+
+				  if (left.plotY < right.plotY) {
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle) - arrowLength * Math.sin(angle) - arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle) - arrowLength * Math.cos(angle) + arrowWidth * Math.sin(angle),
+					);
+
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX - pointRadius * Math.sin(angle) - arrowLength * Math.sin(angle) + arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY - pointRadius * Math.cos(angle) - arrowLength * Math.cos(angle) - arrowWidth * Math.sin(angle),
+					);
+
+
+				  } else {
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle) + arrowLength * Math.sin(angle) - arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle) + arrowLength * Math.cos(angle) + arrowWidth * Math.sin(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle),
+					);
+					path.push(
+					  nextLastPoint.plotX + pointRadius * Math.sin(angle) + arrowLength * Math.sin(angle) + arrowWidth * Math.cos(angle),
+					  nextLastPoint.plotY + pointRadius * Math.cos(angle) + arrowLength * Math.cos(angle) - arrowWidth * Math.sin(angle),
+					);
+
+				  }
+					//console.log(path);
+				  return path
+				}
+				return [
+				  ['M', left.plotX || 0, left.plotY || 0],
+				  ['L', right.plotX || 0, right.plotY || 0],
+				];
+			  });
+			}(Highcharts));
         }
     }
     customElements.define("com-asml-network", NetworkGraph);

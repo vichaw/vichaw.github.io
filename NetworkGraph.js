@@ -70,7 +70,7 @@ function addStyle(styles) {
                 css.appendChild(document.createTextNode(styles));
              
             /* Append style to the tag name */
-            document.getElementsByTagName("head")[0].appendChild(css);
+            shadowRoot.appendChild(css);
         }
 
 var styles = '		.highcharts-container { \
@@ -90,7 +90,7 @@ var styles = '		.highcharts-container { \
 		font-family: Lucida Sans Unicode ; \
 	}';
  
-addStyle(styles);
+
 
 (function() {
 	
@@ -113,6 +113,7 @@ addStyle(styles);
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
             });    
+		addStyle(styles);
             this._firstUpdate = true;
             this._props = {};
             // this._firstConnection = false;

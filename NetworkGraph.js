@@ -96,11 +96,14 @@ addStyle(styles);
 	
 	let template = document.createElement("template");
     template.innerHTML = `
-		<body bgcolor = "white" width="100%" height="100%>	
+		<div id="container" width="100%" height="100%">
+		<body bgcolor = "white" width="100%" style= "height:2000" height="100%>	
 			<figure class="highcharts-figure" >
-				<div id="chartcontainer" width="100%" height="100%"></div>
+				
 			</figure>
+	
 		</body>
+		</div>
 		`;
 	
     class NetworkGraph extends HTMLElement {
@@ -167,7 +170,7 @@ addStyle(styles);
 				this._firstUpdate = false;
 			}
 			
-			var cdiv = this.shadowRoot.getElementById('chartcontainer');
+			var cdiv = this.shadowRoot.getElementById('container');
 			console.log(txtData);
 			var jsonify = JSON.parse(txtData);
 			  console.log("json: "+typeof jsonify);

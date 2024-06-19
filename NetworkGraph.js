@@ -96,14 +96,8 @@ addStyle(styles);
 	
 	let template = document.createElement("template");
     template.innerHTML = `
-		<div id="container" width="100%" height="100%">
-		<body bgcolor = "white" width="100%" style= "height:2000" height="100%>	
-			<figure class="highcharts-figure" >
-				
-			</figure>
-	
-		</body>
-		</div>
+		<div id="container" style= "width:100% height:100%">
+  		</div>
 		`;
 	
     class NetworkGraph extends HTMLElement {

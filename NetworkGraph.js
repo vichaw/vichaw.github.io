@@ -10,7 +10,10 @@ function getIcon(type) {
 			return 'url(data:image/png;base64,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)';
 			break;
 		case 'ODSO':
-			return 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAApCAYAAACY7BHXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATkSURBVGhD7VhNaBxlGH5mZmdmZze7SdZ0NbFNm/5QFOmhWEXwoJYiIvQmSqmIQo+9avHQkzePQjwJpR49KUQUhCpVqTGSlNYoSkRruwmbbPYnuzv/s77fN7NhE3fW3U0mxJCHPJPszHw/z/v3vRuhQcAegRj83hPYF7NbsS9mt2JPiemrNK/kF5ErmChUbFhOA9W6A93yYNkeXK8BNqUkCZBFEaoiIqnFkIxLSKgCRjMqxsczNEvCn2wb0ZUYs17Cd3M5zP9ZwcKSjfRQljYLSORXgZ4LdBHowv72LwSalU3MpmcrMHr0mYmt1WoYEKs4fTKDx48M4NjRCT5kq+goxjZruPbpbfyWV5DQNMgxCfRDG2Pb6h9MuNcQyJMubE+EqC/ijZdP4PjRQ8Eb/SFUjFGv4MrkLFJDI1DkwLQRgYIShWIN58+oOPvsqeBu7wgtAJ99swAtlYEkOHDJgq5D+RARPcfGcDqOqR8KcGwr2EHvCBVTKS2TM0iE24DjutHSo7AVRBRXFmk9N9hB7wgVk0iPYDV/H7pepcQVeOK6tKjjbg/ZXIwebcG2bBTy9yDHU5BisWAHvSNUjEcLJocegUMLFfN/Uw6twTR0LoolLzOmyzbVC/lYmpslv2XBMg2Ulu+jXi1CTT5EzpHpWf+52VGMTQuKikaixigUGrS4hbXiEsqFB1gr5WFTfFuW0TWNWgXllRwfr9erMEmMlj4ARRsi4zCP2VSRgg30gXAxVH55SDgO34ggKiQsjvjACBWGLGQtTd6iDZG3uiXziDb4MI0/AFkdgChrZBAbNhUAx6HcoWKwFYSKYRXbT9BmnLPFXDob6NQnj7B7kpqEJCe6ZkOMkWFMPodNRuIC1uf3Q3Gza9Z0E9VW1g2YthM83YjQc+ajT77Ht78YUGLNIz1qCKiUV3D9vfOQZYXf+Xp2Ac9f+RgnJsZ4GDLIVCB+/SuHxtRV/rkVHcJsB0pyKz3ipjAT6Dh989zTePfVc3jnlbOcVy+8iDOPHQ7e2IhwMZTwbPLWMIiU7AAlUbyhW4dADazNQ62VNnuvDTrkDFtkk/UiJivd640qR4N/XG9kOdn99qHfQQz4AqxE7wRZ8rPK2QqmTSePWZQvnPSOSayHFIAOYUbnDFtgk/WiJeVMS5gdzg4D1VXM/jSHu3N3cPf2HUzfmsEzjw4Gb2xEaDX74PoNTM0UocntXbrdYAFVLa/iiw8vIhZUs17RoZr5CcndvwPk61BFa2vZLtFBDKtmvvt9UdHTi64D8AvATnmGG47yNJLezC/NjP+2YBRsCgqpul0hVIxl0SI0ebtvhpGQBLGei5XjfhEq5lA2gdWy6bcZO8Cq4WIkJUFRpGAHvaPjf2cuvT2Jr352MZhKIB5RiXY9AeWagSRK+HzydYyOHQye9I6OYhimp2fw/rWbuPW7DSWegCrHuPViImstaGi3YRG0IZQa1P7TSU49l2l5yMhFXH7tNN668BI9798rDP8ppgmrmseXN+dx48c/MD2/hIWcDkdIQ1EVSCRM5OKavRMh0Mk6CSaAJbitlzA6LODUsQyee/IIXnhqAsdPPuG/vw3oWkw76OUHuJcrYrlkoEKhohsOJTEdfJTFsixCU2UkEyoyKQVjI0lkD47TKNUfHAG2JGa3IbSa/R+xL2a3Yl/M7gTwD/o5IXc3y1/2AAAAAElFTkSuQmCC)';
+			return 'url(data:image/png;base64,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)';
+			break;
+		case 'DDLS':
+			return 	'url(data:image/png;base64,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)';
 			break;
 		case 'TRCS':
 			return 'url(data:image/png;base64,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)';
@@ -36,12 +39,6 @@ function getIcon(type) {
 		case 'FBPA':
 			return 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAgCAYAAABgrToAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATvSURBVFhHzVjfaxxVFP5mdndmfzWbpG3SSG0lLxXRaqX64IOKIKgg+POhUAXfREERfJC2KEJF8UFE8FH8A6oIxRakL1pKS4RWrChErNjY2CRNst3dZGdndn74nTszm83upLtQ3fRbDpl7554735xz7nfvRAsI3MK4CYJN2JYDu+nDcV3UqjXYjg/XCyATahqQSWnImikMbRlCOq3DzOgwsjne1dUM/aBvgp6zigu/zuDKUhMzc6uwfZPkAMv2EGhpZPMFkJMiFkNmDvwAlrWClBYgR7JGykPB8LBrPIfdYyb23j3JkZnQIQE3JujVcersJfz0Rw1Xr2sYGd0GXfOQ0jWSCRQZuSIN9VOh60RrjHjwJ8MCDQw0PF9DeXkBk+Np7N9TwkP77wwd2rAhwVM/XMCJ83WUSqPIpDWSkon96O5/B03T4XJap8lIVxdw8PEJ3HfPnujuBgS/OjmFc3+aKBXTwirqHQBIdrFcx0uPFvDAvrtUV0K1OpiabqCQ1eGx+D3PG5y5TQbFxHc/zkVckggyYpWlGV6k6BTQyR+ceVKX8vwrIReim6Dvo7RtNxZmf4dt1+Ez7FLQLvv/L5P5fS4Oa7WC5fnLKG3dFZFJIshF5DK1pe13wGlYKM/PoFaeJ28ffLnIArYZ3c4U9bBwjtA3nsdjX2VpFuVrfyuiW7buZDSpXxESCcpktmMjZRaRH5mAURhB9foCKstzqCqbR7U8R1EWDUxRPHRlfmyUkfg6vifjbLtBMvSnbzxPrbyAfGkH8sM7oKeprY6jSMfoXsWBhdc/Og09U6TmsckupUwUvVD9Qmhs12tL8F1H3esFeUzGzFHQh9V17BFqYzir9LEUMWxU8cGbT4Z9XQRh4dWj3yuCGtX/RhANW4dOnl3ua2Q2gkeCI+YKPnzrKdXuTjGfIil2/eQ6ajeXtbLOmh3Web8P2XLJUGo1RgJBqUFZ8rLCgoGb1F87wYQU23jx7eMIUlKDN07HzUBngedM7lQdcKmF2/Or+OSdZ1Q7cav79vQ0ZzC6SqoTDcflS2gwMqmopz9IGisrNk6c+YtHsPW+skjG8nV8euhZ1W4R/O3SNVyeX+EZTkcu2/1m6yGpCPDwvtspC02cvXi1L5LywvJSj9y/E3Ue0w4cOomhggRiLRSS5vFCA58deU61WwTf/+I8jp2pIm8kluU6SIXYto1fvnwM5y7O4eWPpzEiB4teII/Fio1j7+3F5G3DOHCYBIvrM9VkiieKDXz+7guq3WKTM1IoFdLcrPm3l3HcUIERY3oz6bCdOK7TZBwtw9O1ygJXtc+i89pM2j1WsbxPL0tC0rhOW4PkTWoxyXrKzKAgZJT+kVBssn1KfcfYNIJCQQmzEItEOiTbM8UDAnOsIkhdaU+v64annRibG0FZGBK1tkUSRnGTI6iWiywSElJ7flR/ykiwyf4Ym5dibqPhgSRcGLGtUMDHSmuiv3kpZgTD7xDKCo/STdbeYqWJrPMPd5FQpAUtglIT4iT12ctknFiI+GM8eWy7qXGxFy8a3DZqdRcz3GIblVm88fQopr4+zO+1fDSqjaDk3bIsWqMvazRs9RT58rP47VJPGLORyf9v5GxY1JbxxL0ZfHP0Qfx8/Ahee+X5iM0aWntxrEN9nN4VxMswDHUh3xFyfOoHIiGmKX5cqfxO6YXE49atA+BfRjn1KA0DK9YAAAAASUVORK5CYII=)';
 			break;
-		case 'CDSVIEW':
-			return 'url(data:image/png;base64,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)';
-			break;
-		case 'COPR':
-			return 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAlCAYAAAAwYKuzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAO+SURBVFhH7ZhLaFNBFIb/+8g7msSkppSYaltBxQcqglaxC0UEV6Kg7kRcuRQLrsSN7ly5cCUKLrQbl7oQ1y5E0YrWWovQppraJq1GkzT3Ec/c3vRh7txEc6904VcOpXOmM//MnDlnEqFKYAUjmr9XLAs7WJwawqdHFyD5IoajGTTlJ5I7zyOx9ZTZ4jwLAn9mX+P9wHHI/ih0TTOcdgiiiKpaRMe+fiR3nzdbnWdR4OQghgdOIJRII7EuDV3XjQ5WiCSukJtGPjOK1P5LWLvznOkBHr65i4AnaP7VGDZPLJhA7/rDZsty6gW2dWJt5wbaRdXoYIUgSihMf0VufIQE9i8TePpeL6I0oWazwBoCmV7V0BPfgsuHbsw3/gbnkjS62Hy/n3bPLwewq6MH29s3cG1Hexc2taXhlfzwyn7zv+tx5RazM0lH40itjvEtEkMyHIE2f4BcXEsz7IjZ5FzTq3S8jcNgxefB/wJbhSOQJQA7Gvmdo14gBbCua0YC5VmV/PPp032hiwJpwiolzXJhBmODL5B5+4prY29eYjY7QfJIKAl2kwWBguSFL0KJc3UK/lhnQ/NFUtR3HT0uVpkjLML21SvJZBLfZAkyVaRGOP4ePPvgMGKBBAmQzTCwRqAfOjMUlRK61mzGxb5rpmc5jgs8fmeXUfybHVbVFWxMbMOVIzfNluU4LlDVFIhC89mrNrnEOW5LgbeejeLxhy9U9BvHSI3ZsoL7Z/YiHvSaLc5guVSfLGKVz4OQV0LIw0y0MQlhn0z9ZUiC82nHcgfvPP+EJyNZpDriCIX9tvHEHq8TmWlMfy/h9sk9iAY8pgfIDWVRyheN13ezaBUV6YPdpGx+sbYCO9pjCIZ8LEVyEUUB2S95EliuEzg08BL5oa+UwmgymzFqsH6Vwhz6rh9jAxttzS/tLxDp+EUKk3Aqgmh3HJGuNVyL9iQg0+IkCpXa7jFcFWhA7z5fJIBAWxhBGwslw6SrPobdF0iwKGIlsUpi7cwqDv6JwFb4L7BVbAWyoDUCl8Uux6wC20n4AmliRVFRLlcwR2WMZ8xvlydbxVKgSjdKIZvKFTCeySMzwbex8RyKJLSi0S11QallJXn6cRKD2W/wSM2HaJFK1IV9PQh7KdGaDD98jfy7ScS3JuFtVDKp/k+9+ozybAkHrh41TpDh+HNrKUzgzPAUVQjZiFW7iZgcXdEwR6VuqUBXb7FaUqD8mEN5pmQ8Gso2xvwV6sv6L90zV3dQV+kDFRv+Dy46+zZEovpdw1WBrQP8AkcNCcw8p2i1AAAAAElFTkSuQmCC)';
-			break;
 		default:
 			return 'circle';
 	}
@@ -61,12 +58,11 @@ function getUniqueListBy(arr, key) {
 	return [...new Map(arr.map(item => [item[key], item])).values()]
 }
 	
-function addStyle(styles, root) {
+function addStyle(styles) {
              
             /* Create style document */
             var css = document.createElement('style');
             css.type = 'text/css';
-	    css.id = 'customstyle';
          
             if (css.styleSheet)
                 css.styleSheet.cssText = styles;
@@ -74,51 +70,38 @@ function addStyle(styles, root) {
                 css.appendChild(document.createTextNode(styles));
              
             /* Append style to the tag name */
-            //document.getElementsByTagName("head")[0].appendChild(css);
-		//host.shadowRoot.appendChild(css);
-		root.appendChild(css);
+            document.getElementsByTagName("head")[0].appendChild(css);
         }
 
-
+var styles = '		.highcharts-container { \
+		height: 100% !important; \
+		padding: 0px; \
+	} \
+	\
+	.highcharts-credits { \
+	  display: none; \
+	} \
+	\
+	.highcharts-label span{ \
+		padding: 1em 0; \
+		font-size: 1.2em; \
+		color: #555; \
+		text-shadow: 0 0 3px rgba(255,255,255,1) ; \
+		font-family: Lucida Sans Unicode ; \
+	}';
  
-
+addStyle(styles);
 
 (function() {
 	
 	let template = document.createElement("template");
     template.innerHTML = `
-			<body bgcolor = "black">
-				<figure class="highcharts-figure" >
-					<div id="container_network" width="100%" height="100%"></div>
-				</figure>
-			</body>
-			`;
-
-    var styles = '		.highcharts-container { \
-					height: 100% !important; \
-					padding: 0px;  \
-				}  \
-				 \
-				.highcharts-credits {  \
-				  display: none;  \
-				}  \
-				 \
-				.highcharts-label span{  \
-					padding: 1em 0;  \
-					font-size: 1.2em;  \
-					color: #555;  \
-					text-shadow: 0 0 3px rgba(255,255,255,1) ;  \
-					font-family: Lucida Sans Unicode ;  \
-				}  \
-				 \
-				.highcharts-data-table thead tr,  \
-				.highcharts-data-table tr:nth-child(even) {  \
-					background: #f8f8f8;  \
-				}  \
-				 \
-				.highcharts-data-table tr:hover {  \
-					background: #f1f7ff;  \
-				}';
+		<body bgcolor = "white" width="100%" height="100%>	
+			<figure class="highcharts-figure" >
+				<div id="container" width="100%" height="100%"></div>
+			</figure>
+		</body>
+		`;
 	
     class NetworkGraph extends HTMLElement {
         constructor() {
@@ -129,7 +112,6 @@ function addStyle(styles, root) {
             });
 						
             shadowRoot.appendChild(template.content.cloneNode(true));
-	    addStyle(styles, shadowRoot);
             this.addEventListener("click", event => {
                 var event = new Event("onClick");
                 this.dispatchEvent(event);
@@ -185,112 +167,17 @@ function addStyle(styles, root) {
 				this._firstUpdate = false;
 			}
 			
-			var cdiv = this.shadowRoot.getElementById('container_network');
-
-			var jsonify = JSON.parse(txtData);
-			  console.log("json: "+typeof jsonify);
-			  var chdata = {};
-			  if (typeof jsonify === 'object'){
-				chdata = jsonify;
-			  } else {
-				chdata = JSON.parse(jsonify);
-			  }
-			console.log("chdata: "+typeof chdata);
-
-			var nodes={};
-			Highcharts.addEvent(
-				Highcharts.Series,
-				"afterSetOptions",
-				function (e) {
-					nodes = {};
-					var allNodes = [];
-					var selfLoop = [];
-	
-					if (
-						this instanceof Highcharts.Series.types.networkgraph &&
-						e.options.id === "lang-tree"
-					) {
-
-						Object.values(chdata).forEach(function (link) {
-							
-							//console.log(link);
-							
-							if(link[6] === "LOOK_UP"){
-								link[7] = "dash";
-							}
-							
-							var from = {'0': link[0] , '1':link[2]};
-							var to = {'0': link[4] , '1':link[3]};
-							allNodes.push(to);
-							allNodes.push(from);
-							if(link[0] === link[4]){
-								selfLoop.push({'0': link[4] , '1':link[4]+" \u21BB"});
-							}
-							
-						});
-	
-						var uniqNodes = getUniqueListBy(allNodes, '0')
-						console.log(uniqNodes);
-	
-						uniqNodes.forEach(function (node,index){
-						
-							if (index === 0) {
-								nodes[index] = {
-									id: node[0],
-									marker: {
-										radius: 30,
-										symbol: getIcon(node[1]),
-										
-									},
-									dataLabels: {
-										enabled: true,
-										useHTML: true,
-										style: {
-											fontSize: "14px",
-										},
-										allowOverlap: true,
-										color: "#0f0fff",
-										shadow: true
-									},
-									name: getIndexOfK(selfLoop, node[0])
-								};
-							} else {
-								nodes[index] = {
-									id: node[0],
-									marker: {
-										radius: 20,
-										lineColor:"#008000",
-										lineWidth: 0,
-										symbol: getIcon(node[1]),
-										
-									},
-									dataLabels: {
-										enabled: true,
-										useHTML: true,
-										style: {
-											fontSize: "12px"
-										},
-										allowOverlap: true
-									},
-									//color: "#000000",
-									name: getIndexOfK(selfLoop, node[0]),
-								}
-							}					
-						});
-						//console.log(nodes);
-						e.options.nodes = Object.keys(nodes).map(function (id) {
-							return nodes[id];
-						});
-					}
-				}); 
-		
-			var network = Highcharts.chart(cdiv, {
+			var cdiv = this.shadowRoot.getElementById('container');
+			
+			var chdata = JSON.parse(txtData);
+			
+			var network = new Highcharts.chart("container", {
 							chart: {
 								type: "networkgraph",
 								height: "100%"
 							},
 							title: {
-								text: chtitle,
+								text: "", // chtitle
 								align: "left"
 							},
 							subtitle: {
@@ -299,17 +186,18 @@ function addStyle(styles, root) {
 							},
 							plotOptions: {
 								networkgraph: {
-									keys: ["to", "level", "ch_type", "p_type", "from", "extra", "rel_type","dashStyle"],
+									keys: ["from", "to", "level", "ch_type", "p_type", "extra", "rel_type","dashStyle"],
 									turboThreshold: 0.95,
 									layoutAlgorithm: {
-										enableSimulation: false,
-										friction: -0.35,
-										linkLength: 85,
+										//enableSimulation: false,
+										//approximation: "barnes-hut",
+										//friction: -0.35,
+										linkLength: 32,
 										//initialPositions: 'random',
-										// integration: 'euler', 
+										//integration: 'euler', 
 										//integration: 'verlet',
 										// Half of the repulsive force
-										gravitationalConstant: 0.10 
+										gravitationalConstant: 0.01
 									}
 								}
 							},
@@ -366,7 +254,93 @@ function addStyle(styles, root) {
 								data: chdata
 							}]
 						});
-			
+			Highcharts.addEvent(
+			Highcharts.Series,
+			"afterSetOptions",
+			function (e) {
+				//console.log(colors);
+				i = 0,
+				nodes = {};
+				var allNodes = [];
+				var selfLoop = [];
+
+				if (
+					this instanceof Highcharts.Series.types.networkgraph &&
+					e.options.id === "lang-tree"
+				) {
+					e.options.data.forEach(function (link,index) {
+					
+						
+						if(link[6] === "LOOK_UP"){
+							link[7] = "dash";
+						}
+						
+						var from = {'0': link[0] , '1':link[3]};
+						var to = {'0': link[1] , '1':link[4]};
+						allNodes.push(to);
+						allNodes.push(from);
+						if(link[0] === link[1]){
+							selfLoop.push({'0': link[1] , '1':link[1]+" \u21BB"});
+						}
+						
+					});
+					// console.log(allNodes);
+					// console.log(selfLoop);
+
+					var uniqNodes = getUniqueListBy(allNodes, '0')
+					console.log(uniqNodes);
+
+					uniqNodes.forEach(function (node,index){
+					
+						if (node[index] === chtitle) {
+						nodes[index] = {
+							id: node[0],
+							marker: {
+								radius: 25,
+								symbol: getIcon(node[1]),
+								
+							},
+							dataLabels: {
+								enabled: true,
+								useHTML: true,
+								style: {
+									fontSize: "14px",
+								},
+								allowOverlap: true,
+								shadow: true
+							},
+							color: "#10069f",
+							name: getIndexOfK(selfLoop, node[0])
+						};
+						} else {
+							nodes[index] = {
+								id: node[0],
+								marker: {
+									radius: 20,
+									lineColor:"#008000",
+									lineWidth: 0,
+									symbol: getIcon(node[1]),
+									
+								},
+								dataLabels: {
+									enabled: true,
+									useHTML: true,
+									style: {
+										fontSize: "12px"
+									},
+									allowOverlap: true
+								},
+								color: "#00A3E0",
+								name: getIndexOfK(selfLoop, node[0]),
+							}
+						}					
+					});
+					//console.log(nodes);
+					e.options.nodes = Object.keys(nodes).map(function (id) {
+						return nodes[id];
+					});
+				}
+			});
 			(function(H) {
 			  H.wrap(H.seriesTypes.networkgraph.prototype.pointClass.prototype, 'getLinkPath', function(p) {
 				var left = this.toNode,

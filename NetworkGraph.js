@@ -98,7 +98,7 @@ addStyle(styles);
     template.innerHTML = `
 		<body bgcolor = "white" width="100%" height="100%>	
 			<figure class="highcharts-figure" >
-				<div id="container" width="100%" height="100%"></div>
+				<div id="chartcontainer" width="100%" height="100%"></div>
 			</figure>
 		</body>
 		`;
@@ -137,14 +137,6 @@ addStyle(styles);
             this._props = { ...this._props,
                 ...changedProperties
             };
-		if ("Data" in changedProperties) {
-			this.$Data = changedProperties["Data"];
-		}
-		if ("Title" in changedProperties) {
-			this.$Title = changedProperties["Title"];
-		}
-					
-		this.renderNetwork(this.$Data, this.$Title);  
         }
 
         //When the custom widget is removed from the canvas or the analytic application is closed
@@ -156,7 +148,14 @@ addStyle(styles);
         onCustomWidgetAfterUpdate(changedProperties) {
 
 			this._props = { ...this._props, ...changedProperties };
-			
+			if ("Data" in changedProperties) {
+				this.$Data = changedProperties["Data"];
+			}
+			if ("Title" in changedProperties) {
+				this.$Title = changedProperties["Title"];
+			}
+						
+			this.renderNetwork(this.$Data, this.$Title);  
 
         }
 		
@@ -168,7 +167,7 @@ addStyle(styles);
 				this._firstUpdate = false;
 			}
 			
-			var cdiv = this.shadowRoot.getElementById('container');
+			var cdiv = this.shadowRoot.getElementById('chartcontainer');
 			console.log(txtData);
 			var jsonify = JSON.parse(txtData);
 			  console.log("json: "+typeof jsonify);

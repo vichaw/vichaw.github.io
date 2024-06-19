@@ -278,7 +278,7 @@ var styles = '		.highcharts-container { \
 						e.options.id === "lang-tree"
 					) {
 						
-						Object.values(dat).forEach(function (link) {
+						Object.values(chdata).forEach(function (link) {
 						
 							//console.log(link);
 							if(link[6] === "LOOK_UP"){

@@ -179,7 +179,7 @@ addStyle(styles);
 			  }
 			console.log("chdata: "+typeof chdata);
 			
-			var network = Highcharts.chart("container", {
+			var network = Highcharts.chart(cdiv, {
 							chart: {
 								type: "networkgraph",
 								renderTo: 'chart',

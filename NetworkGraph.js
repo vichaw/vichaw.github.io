@@ -178,92 +178,6 @@ var styles = '		.highcharts-container { \
 				chdata = JSON.parse(jsonify);
 			}
 			//console.log("chdata: "+typeof chdata);
-			
-			var network = Highcharts.chart(cdiv, {
-							chart: {
-								type: "networkgraph",
-								renderTo: 'chart',
-								margin: 0
-							},
-							title: {
-								text: "", // iprov,
-								align: "left"
-							},
-							subtitle: {
-								//text: "A Force-Directed Network Graph in Highcharts",
-								align: "left"
-							},
-							plotOptions: {
-								networkgraph: {
-									keys: ["from", "to", "level", "ch_type", "p_type", "extra", "rel_type","dashStyle"],
-									turboThreshold: 0.95,
-									layoutAlgorithm: {
-										//enableSimulation: false,
-										//approximation: "barnes-hut",
-										//friction: -0.35,
-										linkLength: 32,
-										//initialPositions: 'random',
-										//integration: 'euler', 
-										//integration: 'verlet',
-										// Half of the repulsive force
-										gravitationalConstant: 0.01
-									}
-								}
-							},
-							series: [{
-								accessibility: {
-									enabled: false
-								},
-								draggable: true,
-								dataLabels: {
-									enabled: true,
-									linkTextPath: {
-										attributes: {
-											dy: -3
-										}
-									},
-									style: {
-										fontSize: "12px"
-									},
-									// linkFormat: "{point.fromNode.name} \u2192 {point.toNode.name}"+"{point.txt}" + "{point.fromNode.name} \u2190 {point.toNode.name}",
-									// linkFormat: "{point.toNode.name} ",
-									textPath: {
-										enabled: true
-									}, 
-									//linkFormat: "{point.level}",
-									linkFormat: "",
-									//format: "Node",
-									allowOverlap: true
-								},
-								link:{
-									//color: "#0000f0",
-									width: 1.3,
-									dashStyle: "{point.dashStyle}",
-								},
-								id: "lang-tree",
-								allowPointSelect: true,
-								tooltip: {
-									distance:1000,
-									useHTML: true,
-									headerFormat: "",
-									display: "none",
-									enabled: false,
-									hideDelay: 0,
-								},
-								point: {
-									events: {
-										select: function () {
-											var sel = this.id;
-											console.log(this);
-										}
-									}
-								},
-								marker: {
-									radius: 20
-								}, 
-								data: chdata
-							}]
-						});
 			Highcharts.addEvent(
 				Highcharts.Series,
 				"afterSetOptions",
@@ -351,6 +265,93 @@ var styles = '		.highcharts-container { \
 						});
 					}
 			});
+			
+			var network = Highcharts.chart(cdiv, {
+							chart: {
+								type: "networkgraph",
+								renderTo: 'chart',
+								margin: 0
+							},
+							title: {
+								text: "", // iprov,
+								align: "left"
+							},
+							subtitle: {
+								//text: "A Force-Directed Network Graph in Highcharts",
+								align: "left"
+							},
+							plotOptions: {
+								networkgraph: {
+									keys: ["from", "to", "level", "ch_type", "p_type", "extra", "rel_type","dashStyle"],
+									turboThreshold: 0.95,
+									layoutAlgorithm: {
+										//enableSimulation: false,
+										//approximation: "barnes-hut",
+										//friction: -0.35,
+										linkLength: 32,
+										//initialPositions: 'random',
+										//integration: 'euler', 
+										//integration: 'verlet',
+										// Half of the repulsive force
+										gravitationalConstant: 0.01
+									}
+								}
+							},
+							series: [{
+								accessibility: {
+									enabled: false
+								},
+								draggable: true,
+								dataLabels: {
+									enabled: true,
+									linkTextPath: {
+										attributes: {
+											dy: -3
+										}
+									},
+									style: {
+										fontSize: "12px"
+									},
+									// linkFormat: "{point.fromNode.name} \u2192 {point.toNode.name}"+"{point.txt}" + "{point.fromNode.name} \u2190 {point.toNode.name}",
+									// linkFormat: "{point.toNode.name} ",
+									textPath: {
+										enabled: true
+									}, 
+									//linkFormat: "{point.level}",
+									linkFormat: "",
+									//format: "Node",
+									allowOverlap: true
+								},
+								link:{
+									//color: "#0000f0",
+									width: 1.3,
+									dashStyle: "{point.dashStyle}",
+								},
+								id: "lang-tree",
+								allowPointSelect: true,
+								tooltip: {
+									distance:1000,
+									useHTML: true,
+									headerFormat: "",
+									display: "none",
+									enabled: false,
+									hideDelay: 0,
+								},
+								point: {
+									events: {
+										select: function () {
+											var sel = this.id;
+											console.log(this);
+										}
+									}
+								},
+								marker: {
+									radius: 20
+								}, 
+								data: chdata
+							}]
+						});
+			
 			(function(H) {
 			  H.wrap(H.seriesTypes.networkgraph.prototype.pointClass.prototype, 'getLinkPath', function(p) {
 				var left = this.toNode,

@@ -182,14 +182,15 @@ addStyle(styles);
 			var network = Highcharts.chart("container", {
 							chart: {
 								type: "networkgraph",
-								height: "100%"
+								renderTo: 'chart',
+								margin: 0
 							},
 							title: {
-								text: "", // chtitle
+								text: "", // iprov,
 								align: "left"
 							},
 							subtitle: {
-								text: "",
+								//text: "A Force-Directed Network Graph in Highcharts",
 								align: "left"
 							},
 							plotOptions: {
@@ -229,6 +230,7 @@ addStyle(styles);
 									textPath: {
 										enabled: true
 									}, 
+									//linkFormat: "{point.level}",
 									linkFormat: "",
 									//format: "Node",
 									allowOverlap: true
@@ -249,9 +251,9 @@ addStyle(styles);
 									hideDelay: 0,
 								},
 								point: {
-									events: {
-										select: function () {
-											var sel = this.id;
+					                events: {
+					                    select: function () {
+					                        var sel = this.id;
 											console.log(this);
 										}
 									}

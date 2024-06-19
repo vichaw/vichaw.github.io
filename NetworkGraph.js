@@ -261,7 +261,7 @@ var styles = '		.highcharts-container { \
 								marker: {
 									radius: 20
 								}, 
-								data: dat
+								data: chdata
 							}]
 						});
 			Highcharts.addEvent(

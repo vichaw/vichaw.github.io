@@ -269,7 +269,6 @@ var styles = '		.highcharts-container { \
 				"afterSetOptions",
 				function (e) {
 					//console.log(colors);
-					i = 0,
 					nodes = {};
 					var allNodes = [];
 					var selfLoop = [];
@@ -278,9 +277,10 @@ var styles = '		.highcharts-container { \
 						this instanceof Highcharts.Series.types.networkgraph &&
 						e.options.id === "lang-tree"
 					) {
-						e.options.data.forEach(function (link,index) {
 						
-							
+						Object.values(dat).forEach(function (link) {
+						
+							//console.log(link);
 							if(link[6] === "LOOK_UP"){
 								link[7] = "dash";
 							}
@@ -294,12 +294,12 @@ var styles = '		.highcharts-container { \
 							}
 							
 						});
-						// console.log(allNodes);
+						//console.log(allNodes);
 						// console.log(selfLoop);
 
 						var uniqNodes = getUniqueListBy(allNodes, '0')
-						console.log(uniqNodes);
-
+						//console.log(uniqNodes);
+				
 						uniqNodes.forEach(function (node,index){
 						
 							if (node[index] === chtitle) {

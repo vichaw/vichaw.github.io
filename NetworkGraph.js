@@ -137,6 +137,14 @@ addStyle(styles);
             this._props = { ...this._props,
                 ...changedProperties
             };
+		if ("Data" in changedProperties) {
+			this.$Data = changedProperties["Data"];
+		}
+		if ("Title" in changedProperties) {
+			this.$Title = changedProperties["Title"];
+		}
+					
+		this.renderNetwork(this.$Data, this.$Title);  
         }
 
         //When the custom widget is removed from the canvas or the analytic application is closed
@@ -149,14 +157,7 @@ addStyle(styles);
 
 			this._props = { ...this._props, ...changedProperties };
 			
-			if ("Data" in changedProperties) {
-				this.$Data = changedProperties["Data"];
-			}
-			if ("Title" in changedProperties) {
-				this.$Title = changedProperties["Title"];
-			}
-						
-			this.renderNetwork(this.$Data, this.$Title);  
+
         }
 		
         async renderNetwork(txtData, chtitle){

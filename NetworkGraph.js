@@ -169,7 +169,15 @@ addStyle(styles);
 			
 			var cdiv = this.shadowRoot.getElementById('container');
 			
-			var chdata = JSON.parse(txtData);
+			var jsonify = JSON.parse(txtData);
+			  console.log("json: "+typeof jsonify);
+			  var chdata = {};
+			  if (typeof jsonify === 'object'){
+				chdata = jsonify;
+			  } else {
+				chdata = JSON.parse(jsonify);
+			  }
+			console.log("chdata: "+typeof chdata);
 			
 			var network = new Highcharts.chart("container", {
 							chart: {

@@ -74,8 +74,7 @@ function addStyle(styles, root) {
 }
 
 var styles = '		.highcharts-container { \
-		height: 1000px !important; \
-		width: 1400px !important; \
+		height: 2000px !important; \
 		padding: 0px; \
 	} \
 	\

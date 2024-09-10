@@ -287,13 +287,13 @@ var styles = '		.highcharts-container { \
 									layoutAlgorithm: {
 										enableSimulation: false,
 										//approximation: "barnes-hut",
-										//friction: -0.35,
+										friction: -0.9,
 										linkLength: 32,
 										//initialPositions: 'random',
 										//integration: 'euler', 
 										//integration: 'verlet',
 										// Half of the repulsive force
-										gravitationalConstant: 0.95
+										// gravitationalConstant: 0.95
 									}
 								}
 							},

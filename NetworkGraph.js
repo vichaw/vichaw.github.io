@@ -285,7 +285,7 @@ var styles = '		.highcharts-container { \
 									keys: ["from", "to", "level", "ch_type", "p_type", "extra", "rel_type","dashStyle"],
 									turboThreshold: 0.95,
 									layoutAlgorithm: {
-										//enableSimulation: false,
+										enableSimulation: false,
 										//approximation: "barnes-hut",
 										//friction: -0.35,
 										linkLength: 32,

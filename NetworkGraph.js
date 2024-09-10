@@ -167,8 +167,8 @@ var styles = '		.highcharts-container { \
 			
 			var cdiv = this.shadowRoot.getElementById('container');
 			console.log(txtData);
-			var jsonify = JSON.parse(txtData);
-			//console.log("json: "+typeof jsonify);
+			//var jsonify = JSON.parse(txtData);
+			console.log("type txtData: "+typeof txtData);
 			var chdata = {};
 			if (typeof jsonify === 'object'){
 				chdata = jsonify;

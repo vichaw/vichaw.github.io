@@ -170,10 +170,10 @@ var styles = '		.highcharts-container { \
 			//var jsonify = JSON.parse(txtData);
 			console.log("type txtData: "+typeof txtData);
 			var chdata = {};
-			if (typeof jsonify === 'object'){
-				chdata = jsonify;
+			if (typeof txtData === 'object'){
+				chdata = txtData;
 			} else {
-				chdata = JSON.parse(jsonify);
+				chdata = JSON.parse(txtData);
 			}
 			//console.log("chdata: "+typeof chdata);
 			Highcharts.addEvent(

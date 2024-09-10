@@ -293,7 +293,7 @@ var styles = '		.highcharts-container { \
 										//integration: 'euler', 
 										//integration: 'verlet',
 										// Half of the repulsive force
-										gravitationalConstant: 0.01
+										gravitationalConstant: 0.95
 									}
 								}
 							},

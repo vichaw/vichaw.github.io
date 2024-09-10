@@ -96,7 +96,11 @@ var styles = '		.highcharts-container { \
 	
 	let template = document.createElement("template");
     template.innerHTML = `
-		<div id="container" width="100%" height="100%"></div>
+		<body bgcolor = "black" width="100%" style= "height:2000" height="100%>	
+			<figure class="highcharts-figure" >
+				<div id="container" width="100%" height="100%"></div>
+			</figure>
+		</body>
 		`;
 	
     class NetworkGraph extends HTMLElement {

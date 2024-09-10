@@ -74,8 +74,8 @@ function addStyle(styles, root) {
 }
 
 var styles = '		.highcharts-container { \
-		height: 100% !important; \
-		width: 100% !important; \
+		height: 1000px !important; \
+		width: 1400px !important; \
 		padding: 0px; \
 	} \
 	\
@@ -287,7 +287,7 @@ var styles = '		.highcharts-container { \
 									layoutAlgorithm: {
 										enableSimulation: false,
 										//approximation: "barnes-hut",
-										friction: -0.9,
+										//friction: -0.9,
 										linkLength: 32,
 										//initialPositions: 'random',
 										//integration: 'euler', 

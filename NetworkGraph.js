@@ -199,12 +199,12 @@ var styles = '		.highcharts-container { \
 								link[7] = "dash";
 							}
 							
-							var from = {'0': link[0] , '1':link[3]};
-							var to = {'0': link[1] , '1':link[4]};
+							var from = {'0': link[0] , '1':link[2]};
+							var to = {'0': link[4] , '1':link[3]};
 							allNodes.push(to);
 							allNodes.push(from);
-							if(link[0] === link[1]){
-								selfLoop.push({'0': link[1] , '1':link[1]+" \u21BB"});
+							if(link[0] === link[4]){
+							selfLoop.push({'0': link[4] , '1':link[4]+" \u21BB"});
 							}
 							
 						});
@@ -282,7 +282,7 @@ var styles = '		.highcharts-container { \
 							},
 							plotOptions: {
 								networkgraph: {
-									keys: ["from", "to", "level", "ch_type", "p_type", "extra", "rel_type","dashStyle"],
+									keys: ["to", "level", "ch_type", "p_type", "from", "extra", "rel_type","dashStyle"],
 									turboThreshold: 0.95,
 									layoutAlgorithm: {
 										enableSimulation: false,

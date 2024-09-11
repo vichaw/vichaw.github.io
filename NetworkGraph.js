@@ -224,7 +224,7 @@ var styles = '		.highcharts-container { \
 				
 						uniqNodes.forEach(function (node,index){
 						
-							if (node[index] === chtitle) {
+							if (node[0] === chtitle) {
 							nodes[index] = {
 								id: node[0],
 								marker: {
